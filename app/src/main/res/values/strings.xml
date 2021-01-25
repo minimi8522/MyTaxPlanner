@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MyTaxPlanner</string>
+
+    <string name="fragment_income">รายได้</string>
+    <string name="fragment_file">เอกสาร</string>
+    <string name="fragment_home">หน้าหลัก</string>
+    <string name="fragment_tax">ลดหย่อน</string>
+    <string name="fragment_suggest">แนะนำ</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.mytaxplanner.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_incomeFragment"
+            app:destination="@id/incomeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_fileFragment"
+            app:destination="@id/fileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_taxFragment"
+            app:destination="@id/taxFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_suggestFragment"
+            app:destination="@id/suggestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/incomeFragment"
+        android:name="com.example.mytaxplanner.IncomeFragment"
+        android:label="fragment_income"
+        tools:layout="@layout/fragment_income" />
+    <fragment
+        android:id="@+id/fileFragment"
+        android:name="com.example.mytaxplanner.FileFragment"
+        android:label="fragment_file"
+        tools:layout="@layout/fragment_file" />
+    <fragment
+        android:id="@+id/taxFragment"
+        android:name="com.example.mytaxplanner.TaxFragment"
+        android:label="fragment_tax"
+        tools:layout="@layout/fragment_tax" />
+    <fragment
+        android:id="@+id/suggestFragment"
+        android:name="com.example.mytaxplanner.SuggestFragment"
+        android:label="fragment_suggest"
+        tools:layout="@layout/fragment_suggest" />
+</navigation>
