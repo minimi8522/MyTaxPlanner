@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:text="ค่าลดหย่อนส่วนตัว"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:text="eiei"
+                android:gravity="end"
+                android:layout_weight="2"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:gravity="end"
+                android:text="eiei"
+                android:layout_weight="2"/>
+</LinearLayout>
