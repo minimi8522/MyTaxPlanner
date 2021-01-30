@@ -1,15 +1,10 @@
 package com.example.mytaxplanner
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.Toast
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.appcompat.app.AppCompatActivity
 import com.example.mytaxplanner.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.mytaxplanner.fragment.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
@@ -17,40 +12,32 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
-//            when(item.itemId) {
-//                R.id.fragment_home -> {
-//                    // Respond to navigation item 1 click
-//                    Toast.makeText(this,"Home",Toast.LENGTH_SHORT).show()
-//                    true
-//                }
-//                R.id.fragment_income -> {
-//                    // Respond to navigation item 2 click
-//                    Toast.makeText(this,"Income",Toast.LENGTH_SHORT).show()
-//                    true
-//                }
-//                R.id.fragment_file -> {
-//                    // Respond to navigation item 2 click
-//                    Toast.makeText(this,"File",Toast.LENGTH_SHORT).show()
-//                    true
-//                }
-//                R.id.fragment_tax -> {
-//                    // Respond to navigation item 2 click
-//                    Toast.makeText(this,"Tax",Toast.LENGTH_SHORT).show()
-//                    true
-//                }
-//                R.id.fragment_suggest -> {
-//                    // Respond to navigation item 2 click
-//                    Toast.makeText(this,"Suggest",Toast.LENGTH_SHORT).show()
-//                    true
-//                }
-//                else -> false
-//            }
-//        }
-        val navigation = findNavController(R.id.fragment)
-        val config = AppBarConfiguration(setOf(R.id.homeFragment,R.id.incomeFragment,R.id.fileFragment,R.id.taxFragment,R.id.suggestFragment))
-        binding.bottomNavigation.setupWithNavController(navigation)
-        setupActionBarWithNavController(navigation,config)
-    }
 
+        binding.bottomNavigation.selectedItemId = R.id.fragment_home
+        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.fragment_home -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment, HomeFragment()).addToBackStack(null).commit()
+                    true
+                }
+                R.id.fragment_income -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment, IncomeFragment()).addToBackStack(null).commit()
+                    true
+                }
+                R.id.fragment_file -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment, FileFragment()).addToBackStack(null).commit()
+                    true
+                }
+                R.id.fragment_tax -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment, TaxFragment()).addToBackStack(null).commit()
+                    true
+                }
+                R.id.fragment_suggest -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment, SuggestFragment()).addToBackStack(null).commit()
+                    true
+                }
+                else -> false
+            }
+        }
+    }
 }
