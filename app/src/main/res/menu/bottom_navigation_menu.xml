@@ -3,22 +3,27 @@
     <item
         android:id="@+id/fragment_income"
         android:enabled="true"
-        android:title="@string/fragment_income"/>
+        android:title="@string/fragment_income"
+        android:icon="@drawable/ic_baseline_money_24"/>
     <item
         android:id="@+id/fragment_file"
         android:enabled="true"
-        android:title="@string/fragment_file"/>
+        android:title="@string/fragment_file"
+        android:icon="@drawable/ic_baseline_file_24"/>
     <item
         android:id="@+id/fragment_home"
         android:enabled="true"
-        android:title="@string/fragment_home"/>
+        android:title="@string/fragment_home"
+        android:icon="@drawable/ic_baseline_home_24"/>
     <item
         android:id="@+id/fragment_tax"
         android:enabled="true"
-        android:title="@string/fragment_tax"/>
+        android:title="@string/fragment_tax"
+        />
     <item
         android:id="@+id/fragment_suggest"
         android:enabled="true"
-        android:title="@string/fragment_suggest"/>
+        android:title="@string/fragment_suggest"
+        android:icon="@drawable/ic_baseline_comment_bank_24"/>
 
 </menu>

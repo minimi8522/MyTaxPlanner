@@ -1,60 +1,53 @@
 package com.example.mytaxplanner.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.mytaxplanner.R
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mytaxplanner.TaxDeductionAdapter
+import com.example.mytaxplanner.TaxDeductionData
+import com.example.mytaxplanner.databinding.FragmentTaxBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [TaxFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class TaxFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    lateinit var binding: FragmentTaxBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        var mockData = ArrayList<TaxDeductionData>()
+        mockData.add(TaxDeductionData("ประเภทลดหย่อนครอบครัว",0.0, 0.0,1))
+        mockData.add(TaxDeductionData("ลดหย่อนส่วนบุคคล",0.0, 60000.0,2))
+        mockData.add(TaxDeductionData("ลดหย่อนคู่สมรส",0.0, 60000.0,2))
+        mockData.add(TaxDeductionData("ลดหย่อนบิดา",0.0, 30000.0,2))
+        mockData.add(TaxDeductionData("ลดหย่อนมารดา",0.0, 30000.0,2))
+        mockData.add(TaxDeductionData("ประเภทลดหย่อนครอบครัว",0.0, 0.0,1))
+        mockData.add(TaxDeductionData("ลดหย่อนส่วนบุคคล",0.0, 60000.0,2))
+        mockData.add(TaxDeductionData("ลดหย่อนคู่สมรส",0.0, 60000.0,2))
+        mockData.add(TaxDeductionData("ลดหย่อนบิดา",0.0, 30000.0,2))
+        mockData.add(TaxDeductionData("ลดหย่อนมารดา",0.0, 30000.0,2))
+        mockData.add(TaxDeductionData("ประเภทลดหย่อนครอบครัว",0.0, 0.0,1))
+        mockData.add(TaxDeductionData("ลดหย่อนส่วนบุคคล",0.0, 60000.0,2))
+        mockData.add(TaxDeductionData("ลดหย่อนคู่สมรส",0.0, 60000.0,2))
+        mockData.add(TaxDeductionData("ลดหย่อนบิดา",0.0, 30000.0,2))
+        mockData.add(TaxDeductionData("ลดหย่อนมารดา",0.0, 30000.0,2))
+        mockData.add(TaxDeductionData("ประเภทลดหย่อนครอบครัว",0.0, 0.0,1))
+        mockData.add(TaxDeductionData("ลดหย่อนส่วนบุคคล",0.0, 60000.0,2))
+        mockData.add(TaxDeductionData("ลดหย่อนคู่สมรส",0.0, 60000.0,2))
+        mockData.add(TaxDeductionData("ลดหย่อนบิดา",0.0, 30000.0,2))
+        mockData.add(TaxDeductionData("ลดหย่อนมารดา",0.0, 30000.0,2))
+
+        binding.recycleView.layoutManager = LinearLayoutManager(context)
+        binding.recycleView.adapter = TaxDeductionAdapter(mockData)
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tax, container, false)
+        binding = FragmentTaxBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment TaxFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            TaxFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }
