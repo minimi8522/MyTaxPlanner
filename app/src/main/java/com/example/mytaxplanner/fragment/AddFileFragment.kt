@@ -6,17 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.mytaxplanner.databinding.FragmentHomeBinding
+import com.example.mytaxplanner.databinding.FragmentAddFileBinding
 import com.example.mytaxplanner.viewmodel.SharedViewModel
 
-class HomeFragment : BaseFragment() {
-    private lateinit var binding: FragmentHomeBinding
+class AddFileFragment : BaseFragment() {
+    private lateinit var binding: FragmentAddFileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(layoutInflater)
+        binding = FragmentAddFileBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -27,7 +27,7 @@ class HomeFragment : BaseFragment() {
         } ?: throw Exception("Invalid Activity")
 
         viewModel.getTaxData().observe(viewLifecycleOwner, Observer {
-            binding.tvIncome.text = it.income.toString()
+
         })
     }
 }

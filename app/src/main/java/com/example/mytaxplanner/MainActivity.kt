@@ -1,17 +1,21 @@
 package com.example.mytaxplanner
 
+import android.app.Activity
+import android.content.Intent
+import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
+import android.provider.MediaStore
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.example.mytaxplanner.databinding.ActivityMainBinding
 import com.example.mytaxplanner.fragment.*
+import com.example.mytaxplanner.viewmodel.SharedViewModel
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        const val PICK_IMAGE = 1000
+    }
     private lateinit var binding:ActivityMainBinding
     private lateinit var viewModel: SharedViewModel
 
@@ -46,11 +50,34 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.bottomNavigation.selectedItemId = R.id.fragment_home
+        viewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
+    }
 
-//        viewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
-//        viewModel.getAllTax()?.value?.size
-//        viewModel.getAllTax()!!.observe(this, Observer { data ->
-//            Log.e("Main",data.size.toString())
-//        })
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_IMAGE) {
+            val selectedImage: Uri? = data?.data
+            val picturePath: String? = getRealPathFromURI(selectedImage, this)
+            if (picturePath != null) {
+                val fragment = FileFragment()
+                val args = Bundle()
+                args.putString("picturePath", picturePath)
+                fragment.arguments = args
+                supportFragmentManager.beginTransaction().replace(R.id.fragment, fragment).commit()
+            }
+        }
+    }
+
+    private fun getRealPathFromURI(selectedImage: Uri?, activity: Activity): String? {
+        val projection = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor: Cursor = activity.managedQuery(selectedImage, projection, null, null, null) ?: return null
+
+        val column_index: Int = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+
+        return if (cursor.moveToFirst()) {
+            return cursor.getString(column_index)
+        } else {
+            null
+        }
     }
 }

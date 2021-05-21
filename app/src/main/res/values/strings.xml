@@ -6,7 +6,7 @@
     <string name="fragment_home">หน้าหลัก</string>
     <string name="fragment_tax">ลดหย่อน</string>
     <string name="fragment_suggest">แนะนำ</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="single">โสด</string>
     <string name="married">สมรส</string>
@@ -16,4 +16,13 @@
     <string name="alive">มีชีวิต</string>
     <string name="dead">เสียชีวิต</string>
     <string name="confirm">ยืนยีน</string>
+    <string name="sick">ทุพพลภาพ</string>
+    <string name="notIncome">สมรสไม่มีรายได้</string>
+
+    <string name="accept">ยืนยัน</string>
+    <string name="type">ประเภท</string>
+    <string name="income">รายได้</string>
+    <string name="withholding_tax">ภาษี ณ ที่จ่าย</string>
+    <string name="choose_file">เลือกเอกสาร</string>
+    <string name="file">เอกสาร :</string>
 </resources>
