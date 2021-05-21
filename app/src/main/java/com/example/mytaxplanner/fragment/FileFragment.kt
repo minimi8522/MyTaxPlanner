@@ -1,12 +1,14 @@
 package com.example.mytaxplanner.fragment
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.mytaxplanner.MainActivity
 import com.example.mytaxplanner.databinding.FragmentFileBinding
 import com.example.mytaxplanner.viewmodel.SharedViewModel
 
@@ -27,16 +29,32 @@ class FileFragment : BaseFragment() {
             ViewModelProvider(this).get(SharedViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
 
-        binding.button5.setOnClickListener {
+        binding.btnChooseFile.setOnClickListener {
             val galleryIntent = Intent()
-            galleryIntent.type = "file/*"
+            galleryIntent.type = "image/*"
             galleryIntent.action = Intent.ACTION_GET_CONTENT
             val chooserIntent = Intent.createChooser(galleryIntent, "Select Source")
             startActivityForResult(chooserIntent, 1000)
         }
 
+        binding.btnConfirm.setOnClickListener {
+
+        }
+
         viewModel.getTaxData().observe(viewLifecycleOwner, Observer {
 
         })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == MainActivity.PICK_IMAGE) {
+            val selectedImage: Uri? = data?.data
+            if (null != selectedImage) {
+                // update the preview image in the layout
+                binding.ivFile.setImageURI(selectedImage)
+                binding.btnConfirm.visibility = View.VISIBLE
+            }
+        }
     }
 }

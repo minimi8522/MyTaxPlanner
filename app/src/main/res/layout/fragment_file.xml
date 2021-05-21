@@ -22,6 +22,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnChooseFile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/choose_file"
@@ -35,8 +36,8 @@
         app:layout_constraintStart_toEndOf="@id/tvFile"
         app:layout_constraintTop_toTopOf="@+id/tvFile" />
 
-    <FrameLayout
-        android:id="@+id/flFile"
+    <ImageView
+        android:id="@+id/ivFile"
         android:background="@color/teal_200"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -44,23 +45,24 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintBottom_toTopOf="@+id/btnConfirm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFile" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btnConfirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/accept"
         android:textStyle="bold"
         android:textSize="16sp"
         android:layout_marginBottom="32dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/flFile"/>
+        app:layout_constraintTop_toBottomOf="@id/ivFile"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

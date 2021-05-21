@@ -52,32 +52,4 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.selectedItemId = R.id.fragment_home
         viewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
     }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == PICK_IMAGE) {
-            val selectedImage: Uri? = data?.data
-            val picturePath: String? = getRealPathFromURI(selectedImage, this)
-            if (picturePath != null) {
-                val fragment = FileFragment()
-                val args = Bundle()
-                args.putString("picturePath", picturePath)
-                fragment.arguments = args
-                supportFragmentManager.beginTransaction().replace(R.id.fragment, fragment).commit()
-            }
-        }
-    }
-
-    private fun getRealPathFromURI(selectedImage: Uri?, activity: Activity): String? {
-        val projection = arrayOf(MediaStore.Images.Media.DATA)
-        val cursor: Cursor = activity.managedQuery(selectedImage, projection, null, null, null) ?: return null
-
-        val column_index: Int = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-
-        return if (cursor.moveToFirst()) {
-            return cursor.getString(column_index)
-        } else {
-            null
-        }
-    }
 }
