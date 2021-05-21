@@ -19,6 +19,7 @@
         android:id="@+id/fragment_tax"
         android:enabled="true"
         android:title="@string/fragment_tax"
+        android:icon="@drawable/ic_baseline_insert_chart_outlined_24"
         />
     <item
         android:id="@+id/fragment_suggest"
