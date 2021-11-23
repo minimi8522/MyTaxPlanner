@@ -4,14 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mytaxplanner.R
 import com.example.mytaxplanner.adapter.IncomeAdapter
 import com.example.mytaxplanner.databinding.FragmentIncomeBinding
-import com.example.mytaxplanner.model.IncomeData
 
 class IncomeFragment() : BaseFragment() {
 

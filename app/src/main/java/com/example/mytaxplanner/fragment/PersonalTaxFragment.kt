@@ -23,9 +23,6 @@ class PersonalTaxFragment : BaseFragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel =  activity?.run {
-            ViewModelProvider(this).get(SharedViewModel::class.java)
-        } ?: throw Exception("Invalid Activity")
 
         binding.button.setOnClickListener {
             if (binding.radioGroup.checkedRadioButtonId == -1 || binding.radioGroup1.checkedRadioButtonId == -1 ||binding.radioGroup2.checkedRadioButtonId == -1 ){

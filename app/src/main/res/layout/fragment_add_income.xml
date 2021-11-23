@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvType" />
 
     <TextView
-        android:id="@+id/tvDeduct"
+        android:id="@+id/tvTaxPaid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -72,10 +72,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvDeduct"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTaxPaid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/tvDeduct" />
+        app:layout_constraintTop_toTopOf="@+id/tvTaxPaid" />
 
     <Button
         android:id="@+id/btnConfirm"
