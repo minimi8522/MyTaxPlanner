@@ -26,8 +26,5 @@ class SuggestFragment : BaseFragment() {
             ViewModelProvider(this).get(SharedViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
 
-        viewModel.getTaxData().observe(viewLifecycleOwner, Observer {
-
-        })
     }
 }

@@ -26,8 +26,5 @@ class HomeFragment : BaseFragment() {
             ViewModelProvider(this).get(SharedViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
 
-        viewModel.getTaxData().observe(viewLifecycleOwner, Observer {
-            binding.tvIncome.text = it.income.toString()
-        })
     }
 }

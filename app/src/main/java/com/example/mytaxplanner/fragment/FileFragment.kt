@@ -41,9 +41,6 @@ class FileFragment : BaseFragment() {
 
         }
 
-        viewModel.getTaxData().observe(viewLifecycleOwner, Observer {
-
-        })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

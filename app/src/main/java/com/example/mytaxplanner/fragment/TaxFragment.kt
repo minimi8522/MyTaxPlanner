@@ -28,14 +28,11 @@ class TaxFragment : BaseFragment() {
         } ?: throw Exception("Invalid Activity")
 
         binding.btnAdd.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment,AddIncomeFragment())?.addToBackStack(null)?.commit()
+//            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment,AddIncomeFragment())?.addToBackStack(null)?.commit()
         }
         binding.btnProfile.setOnClickListener {
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment,PersonalTaxFragment())?.addToBackStack(null)?.commit()
         }
 
-        viewModel.getTaxData().observe(viewLifecycleOwner, Observer {
-
-        })
     }
 }

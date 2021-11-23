@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.mytaxplanner.databinding.FragmentPersonalTaxBinding
@@ -36,13 +37,11 @@ class PersonalTaxFragment : BaseFragment() {
                 builder.setPositiveButton("Yes"){dialogInterface, which ->
                     dialogInterface.dismiss()
                 }.show()
-            }else{
+            } else {
+//                viewModel.
                 requireActivity().supportFragmentManager.popBackStack()
             }
         }
 
-        viewModel.getTaxData().observe(viewLifecycleOwner, Observer {
-
-        })
     }
 }

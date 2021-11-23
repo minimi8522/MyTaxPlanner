@@ -25,4 +25,5 @@
     <string name="withholding_tax">ภาษี ณ ที่จ่าย</string>
     <string name="choose_file">เลือกเอกสาร</string>
     <string name="file">เอกสาร :</string>
+    <string name="normal">ปกติ</string>
 </resources>

@@ -34,10 +34,10 @@ class MainActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction().replace(R.id.fragment, IncomeFragment()).commit()
                     true
                 }
-                R.id.fragment_file -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.fragment, FileFragment()).commit()
-                    true
-                }
+//                R.id.fragment_file -> {
+//                    supportFragmentManager.beginTransaction().replace(R.id.fragment, FileFragment()).commit()
+//                    true
+//                }
                 R.id.fragment_tax -> {
                     supportFragmentManager.beginTransaction().replace(R.id.fragment, TaxFragment()).commit()
                     true

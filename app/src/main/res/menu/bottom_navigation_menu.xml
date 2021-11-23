@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/fragment_income"
-        android:enabled="true"
-        android:title="@string/fragment_income"
-        android:icon="@drawable/ic_baseline_money_24"/>
-    <item
-        android:id="@+id/fragment_file"
-        android:enabled="true"
-        android:title="@string/fragment_file"
-        android:icon="@drawable/ic_baseline_file_24"/>
-    <item
         android:id="@+id/fragment_home"
         android:enabled="true"
         android:title="@string/fragment_home"
         android:icon="@drawable/ic_baseline_home_24"/>
+    <item
+        android:id="@+id/fragment_income"
+        android:enabled="true"
+        android:title="@string/fragment_income"
+        android:icon="@drawable/ic_baseline_money_24"/>
+<!--    <item-->
+<!--        android:id="@+id/fragment_file"-->
+<!--        android:enabled="true"-->
+<!--        android:title="@string/fragment_file"-->
+<!--        android:icon="@drawable/ic_baseline_file_24"/>-->
     <item
         android:id="@+id/fragment_tax"
         android:enabled="true"
