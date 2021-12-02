@@ -11,6 +11,7 @@ import com.example.mytaxplanner.R
 import com.example.mytaxplanner.adapter.DeductAdapter
 import com.example.mytaxplanner.adapter.IncomeAdapter
 import com.example.mytaxplanner.databinding.FragmentTaxBinding
+import com.example.mytaxplanner.repository.TaxPlannerDatabase
 import com.example.mytaxplanner.viewmodel.SharedViewModel
 
 class TaxFragment : BaseFragment() {
@@ -31,8 +32,7 @@ class TaxFragment : BaseFragment() {
         binding.deductRecycle.adapter = adapter
 
         binding.btnAdd.setOnClickListener {
-      //      activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment,AddIncomeFragment())?.addToBackStack(null)?.commit()
-          TODO("ต่อตรงนี้นะครับ ทำคล้าย addIncome")
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment,AddDeductFragment())?.addToBackStack(null)?.commit()
         }
         binding.btnProfile.setOnClickListener {
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment,PersonalTaxFragment())?.addToBackStack(null)?.commit()
@@ -40,5 +40,8 @@ class TaxFragment : BaseFragment() {
         viewModel.deductList.observe(viewLifecycleOwner, { list ->
             adapter.updateList(list)
         })
+
+        val db = TaxPlannerDatabase.getInstance(requireContext()).taxPlannerDao
+        db.InsertIncomeData()
     }
 }

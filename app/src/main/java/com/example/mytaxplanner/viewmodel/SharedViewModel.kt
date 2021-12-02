@@ -23,8 +23,8 @@ class SharedViewModel : ViewModel() {
     fun addIncomeData(income: Double , incomeVAT:Double) {
         _incomeList.value?.add(IncomeData(income,incomeVAT))
     }
-    fun addDeductData(deduct: Double , deductMax:Double) {
-        _incomeList.value?.add(IncomeData(deduct,deductMax))
+    fun addDeductData(deductType: Int , deductVal:Double) {
+        _deductList.value?.add(DeductData(deductType,deductVal))
     }
 
     fun removeAt(index: Int) {

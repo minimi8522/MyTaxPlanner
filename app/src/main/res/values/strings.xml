@@ -22,6 +22,7 @@
     <string name="accept">ยืนยัน</string>
     <string name="type">ประเภท</string>
     <string name="income">รายได้</string>
+    <string name="deduct">ลดหย่อน</string>
     <string name="withholding_tax">ภาษี ณ ที่จ่าย</string>
     <string name="choose_file">เลือกเอกสาร</string>
     <string name="file">เอกสาร :</string>
