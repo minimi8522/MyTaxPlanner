@@ -22,9 +22,8 @@ class HomeFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel =  activity?.run {
-            ViewModelProvider(this).get(SharedViewModel::class.java)
-        } ?: throw Exception("Invalid Activity")
-
+        viewModel.incomeList.observe(viewLifecycleOwner, { list ->
+            binding.tvIncome.text = viewModel.calculateIncome(list)
+        })
     }
 }

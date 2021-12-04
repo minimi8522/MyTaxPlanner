@@ -98,11 +98,11 @@
         app:layout_constraintGuide_percent="0.33"
         />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="-54dp"
-        tools:layout_editor_absoluteY="353dp" />
+<!--    <Spinner-->
+<!--        android:id="@+id/spinner"-->
+<!--        android:layout_width="409dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        tools:layout_editor_absoluteX="-54dp"-->
+<!--        tools:layout_editor_absoluteY="353dp" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

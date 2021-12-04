@@ -11,6 +11,8 @@ import com.example.mytaxplanner.R
 import com.example.mytaxplanner.adapter.DeductAdapter
 import com.example.mytaxplanner.adapter.IncomeAdapter
 import com.example.mytaxplanner.databinding.FragmentTaxBinding
+import com.example.mytaxplanner.model.DeductData
+import com.example.mytaxplanner.model.IncomeData
 import com.example.mytaxplanner.repository.TaxPlannerDatabase
 import com.example.mytaxplanner.viewmodel.SharedViewModel
 
@@ -38,10 +40,10 @@ class TaxFragment : BaseFragment() {
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment,PersonalTaxFragment())?.addToBackStack(null)?.commit()
         }
         viewModel.deductList.observe(viewLifecycleOwner, { list ->
-            adapter.updateList(list)
+            adapter.updateList(list.map { DeductData(it.deductType, it.deduction) })
         })
 
-        val db = TaxPlannerDatabase.getInstance(requireContext()).taxPlannerDao
-        db.InsertIncomeData()
+//        val db = TaxPlannerDatabase.getInstance(requireContext()).taxPlannerDao
+//        db.insertIncomeData()
     }
 }

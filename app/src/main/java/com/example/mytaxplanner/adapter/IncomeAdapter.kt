@@ -1,5 +1,6 @@
 package com.example.mytaxplanner.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -16,9 +17,10 @@ class IncomeAdapter(var incomeDataList: List<IncomeData>) : RecyclerView.Adapter
         return ViewHolder(CardIncomeBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.getIncome.text = incomeDataList[position].income.toString()
-        holder.getTaxPaid.text = incomeDataList[position].incomeVAT.toString()
+        holder.getIncome.text = "${incomeDataList[position].income}  บาท"
+        holder.getTaxPaid.text = "${incomeDataList[position].incomeVAT}  บาท"
     }
 
     override fun getItemCount(): Int {

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mytaxplanner.R
 import com.example.mytaxplanner.adapter.IncomeAdapter
 import com.example.mytaxplanner.databinding.FragmentIncomeBinding
+import com.example.mytaxplanner.model.IncomeData
 
 class IncomeFragment() : BaseFragment() {
 
@@ -39,21 +40,13 @@ class IncomeFragment() : BaseFragment() {
         }
 
         viewModel.incomeList.observe(viewLifecycleOwner, { list ->
-            adapter.updateList(list)
+            adapter.updateList(list.map { IncomeData(it.income, it.incomeVAT) })
         })
 
 
     }
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment IncomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             IncomeFragment().apply {

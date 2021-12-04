@@ -9,6 +9,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.mytaxplanner.databinding.FragmentAddIncomeBinding
+import com.example.mytaxplanner.model.entity.IncomeDataEntity
+import com.example.mytaxplanner.repository.TaxPlannerDatabase
 import com.example.mytaxplanner.viewmodel.SharedViewModel
 
 class AddIncomeFragment : BaseFragment() {

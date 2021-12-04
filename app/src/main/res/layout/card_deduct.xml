@@ -55,5 +55,6 @@
             app:layout_constraintTop_toTopOf="parent"
             android:contentDescription="label for icon"
             tools:ignore="HardcodedText" />
+            <!-- TODO: (ใส่ข้อความระบุตัวเลข)-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
