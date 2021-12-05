@@ -20,9 +20,9 @@ class SharedViewModel(val context: Application) : AndroidViewModel(context) {
 
 //    val deductList : LiveData<MutableList<DeductData>> = _deductList
 
-    val db = TaxPlannerDatabase.getInstance(context).taxPlannerDao
-    var incomeList : LiveData<List<IncomeDataEntity>>
+    private val db = TaxPlannerDatabase.getInstance(context).taxPlannerDao
 
+    var incomeList : LiveData<List<IncomeDataEntity>>
     var deductList : LiveData<List<DeductDataEntity>>
 
     init {
@@ -52,18 +52,15 @@ class SharedViewModel(val context: Application) : AndroidViewModel(context) {
     }
 
     fun removeAt(index: Int) {
-//        if (!_incomeList.value.isNullOrEmpty()) {
-//            val oldValue = _incomeList.value
-//            oldValue?.removeAt(index).also { _incomeList.value = oldValue!! }
-//        } else {
-//            _incomeList.value = mutableListOf()
-//        }
+        viewModelScope.launch(Dispatchers.IO) {
+            db.deleteById(index)
+        }
     }
 
     fun calculateIncome(list: List<IncomeDataEntity>?) : String {
         return if (list != null) {
             var sum = 0.0
-            list?.forEach {
+            list.forEach {
                 sum += it.income
             }
             sum.toString()

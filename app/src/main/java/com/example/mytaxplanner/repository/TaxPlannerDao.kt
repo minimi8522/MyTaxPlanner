@@ -22,4 +22,7 @@ interface TaxPlannerDao {
     @Query("SELECT * FROM deduct_table")
     fun getDeduct() : LiveData<List<DeductDataEntity>>
 
+    @Query("DELETE FROM income_table WHERE id = :incomeId")
+    fun deleteById(incomeId: Int)
+
 }
