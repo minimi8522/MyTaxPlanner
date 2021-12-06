@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mytaxplanner.databinding.FragmentAddIncomeBinding
 import com.example.mytaxplanner.model.entity.IncomeDataEntity
 import com.example.mytaxplanner.repository.TaxPlannerDatabase
+import com.example.mytaxplanner.util.DecimalDigitsInputFilter
 import com.example.mytaxplanner.viewmodel.SharedViewModel
 
 class AddIncomeFragment : BaseFragment() {
@@ -29,12 +30,12 @@ class AddIncomeFragment : BaseFragment() {
 
         binding.apply {
             etType.inputType = InputType.TYPE_CLASS_NUMBER
-            etDeduct.inputType = InputType.TYPE_CLASS_NUMBER
-            etIncome.inputType = InputType.TYPE_CLASS_NUMBER
+            etIncome.filters = arrayOf(DecimalDigitsInputFilter(null,2))
+            etDeduct.filters = arrayOf(DecimalDigitsInputFilter(null,2))
 
             btnConfirm.setOnClickListener {
-                if (binding.etType.text.isNotEmpty() && binding.etIncome.text.isNotEmpty() && binding.etDeduct.text.isNotEmpty()) {
-                    viewModel.addIncomeData(binding.etIncome.text.toString().toDouble() , binding.etDeduct.text.toString().toDouble())
+                if (etType.text.isNotEmpty() && etIncome.text.isNotEmpty() && etDeduct.text.isNotEmpty()) {
+                    viewModel.addIncomeData(etIncome.text.toString().toDouble() , etDeduct.text.toString().toDouble())
                     requireActivity().supportFragmentManager.popBackStack()
                 } else {
                     val builder = AlertDialog.Builder(requireContext())

@@ -64,7 +64,10 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvIncome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/tvIncome" />
+        app:layout_constraintTop_toTopOf="@+id/tvIncome"
+        android:inputType="number"
+        />
+
 
     <EditText
         android:id="@+id/etDeduct"
@@ -75,7 +78,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvTaxPaid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/tvTaxPaid" />
+        app:layout_constraintTop_toTopOf="@+id/tvTaxPaid"
+        android:inputType="number"/>
 
     <Button
         android:id="@+id/btnConfirm"

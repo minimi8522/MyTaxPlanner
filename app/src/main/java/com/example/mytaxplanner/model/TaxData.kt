@@ -21,7 +21,7 @@ data class TaxData(
         const val LV3 = 15
         const val LV4 = 20
         const val LV5 = 25
-        const val LV6 =30
+        const val LV6 = 30
         const val LV7 = 35
     }
 }

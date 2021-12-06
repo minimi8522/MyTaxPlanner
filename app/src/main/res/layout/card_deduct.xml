@@ -24,14 +24,57 @@
         android:padding="8dp">
 
         <TextView
+            android:id="@+id/textDeductType"
+            android:padding="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/deduct_type"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+
+        <TextView
+            android:id="@+id/deductType"
+            android:padding="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="test"
+            app:layout_constraintTop_toBottomOf="@id/textDeductType"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+
+        <TextView
+            android:id="@+id/textDeduct"
+            android:padding="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/deduct"
+            app:layout_constraintTop_toBottomOf="@id/deductType"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+        <TextView
             android:id="@+id/tvDeduct"
             android:padding="8dp"
             android:layout_marginStart="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="123456"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/deductType"
+            app:layout_constraintStart_toEndOf="@id/guideline3"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+
+        <TextView
+            android:id="@+id/textMaxDeduct"
+            android:padding="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tvDeduct"
             app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/deduct_max"
             android:textAppearance="?attr/textAppearanceHeadline6" />
 
         <TextView
@@ -41,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tvDeduct"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline3"
             tools:text="123456"
             android:textAppearance="?attr/textAppearanceHeadline6" />
 
@@ -55,6 +98,13 @@
             app:layout_constraintTop_toTopOf="parent"
             android:contentDescription="label for icon"
             tools:ignore="HardcodedText" />
-            <!-- TODO: (ใส่ข้อความระบุตัวเลข)-->
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="158dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

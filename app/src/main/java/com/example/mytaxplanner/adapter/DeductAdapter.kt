@@ -19,8 +19,8 @@ class DeductAdapter(var deductDataList: List<DeductData>) : RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.getDeduct.text = deductDataList[position].deduction.toString()
-        holder.getMax.text = deductDataList[position].deductionMax.toString()
+        holder.getDeduct.text = "${deductDataList[position].deduction} บาท"
+        holder.getMax.text = "${deductDataList[position].deductionMax} บาท"
     }
 
     override fun getItemCount(): Int {

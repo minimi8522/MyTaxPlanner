@@ -26,4 +26,5 @@ class HomeFragment : BaseFragment() {
             binding.tvIncome.text = viewModel.calculateIncome(list)
         })
     }
+//    TODO("คำนวณภาษีตามขั้นบันได")
 }

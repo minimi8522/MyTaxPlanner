@@ -41,11 +41,9 @@
             android:layout_marginStart="8dp"
             android:maxLines="1"
             android:padding="8dp"
-            app:layout_constraintHorizontal_bias="0.0"
             android:textAppearance="?attr/textAppearanceHeadline6"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/guideline2"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/incomeText"
             tools:text="123456" />
 
         <TextView
@@ -54,19 +52,12 @@
             android:layout_marginStart="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/incomeText"
+            app:layout_constraintTop_toBottomOf="@+id/tvIncome"
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/withholding_tax"
             android:textAppearance="?attr/textAppearanceHeadline6" />
 
 
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.41" />
 
         <TextView
             android:id="@+id/tvTaxPaid"
@@ -75,10 +66,8 @@
             android:layout_marginStart="8dp"
             android:padding="8dp"
             android:textAppearance="?attr/textAppearanceHeadline6"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/guideline2"
+            app:layout_constraintTop_toBottomOf="@id/taxPaidText"
+            app:layout_constraintStart_toStartOf="parent"
             tools:text="123456" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

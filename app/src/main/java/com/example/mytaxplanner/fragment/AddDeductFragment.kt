@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.mytaxplanner.databinding.FragmentAddDeductionBinding
 import com.example.mytaxplanner.databinding.FragmentAddIncomeBinding
+import com.example.mytaxplanner.util.DecimalDigitsInputFilter
 import com.example.mytaxplanner.viewmodel.SharedViewModel
 
 class AddDeductFragment : BaseFragment() {
@@ -28,11 +29,11 @@ class AddDeductFragment : BaseFragment() {
 
         binding.apply {
             etType.inputType = InputType.TYPE_CLASS_NUMBER
-            etDeduct.inputType = InputType.TYPE_NUMBER_FLAG_DECIMAL
+            etDeduct.filters = arrayOf(DecimalDigitsInputFilter(null,2))
 
             btnConfirm.setOnClickListener {
-                if (binding.etType.text.isNotEmpty() && binding.etDeduct.text.isNotEmpty()) {
-                    viewModel.addDeductData(binding.etType.text.toString().toInt() , binding.etDeduct.text.toString().toDouble())
+                if (etType.text.isNotEmpty() && etDeduct.text.isNotEmpty()) {
+                    viewModel.addDeductData(etType.text.toString().toInt() , etDeduct.text.toString().toDouble())
                     requireActivity().supportFragmentManager.popBackStack()
                 } else {
                     val builder = AlertDialog.Builder(requireContext())

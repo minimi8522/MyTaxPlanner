@@ -32,7 +32,7 @@ class IncomeFragment() : BaseFragment() {
 
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             override fun onMove(v: RecyclerView, h: RecyclerView.ViewHolder, t: RecyclerView.ViewHolder) = false
-            override fun onSwiped(h: RecyclerView.ViewHolder, dir: Int) = viewModel.removeAt(h.adapterPosition)
+            override fun onSwiped(h: RecyclerView.ViewHolder, dir: Int) = viewModel.removeIncomeAt(viewModel.incomeList.value?.get(h.adapterPosition)!!.id)
         }).attachToRecyclerView(binding.incomeRecycle)
 
         binding.button4.setOnClickListener {
