@@ -46,11 +46,11 @@ class SharedViewModel(val context: Application) : AndroidViewModel(context) {
 //        _deductList.value = mutableListOf()
     }
 
-    fun addIncomeData(income: Double, incomeVAT: Double) {
+    fun addIncomeData(type:Int,income: Double, incomeVAT: Double) {
         // _incomeList.value?.add(IncomeData(income,incomeVAT))
         viewModelScope.launch(Dispatchers.IO) {
 
-            db.insertIncomeData(IncomeDataEntity(0, income, incomeVAT))
+            db.insertIncomeData(IncomeDataEntity(0,type, income, incomeVAT))
         }
     }
 
@@ -104,6 +104,9 @@ class SharedViewModel(val context: Application) : AndroidViewModel(context) {
         val deduct = calculateDeduct(deductList.value)
         var vat = 0.0
 
+        if(income == 0.0 && deduct > 0.0 ){
+            return 0.0
+        }
         var incomeCal = income - deduct
         when (incomeCal) {
             in 0.0..150000.0 -> {
@@ -138,9 +141,6 @@ class SharedViewModel(val context: Application) : AndroidViewModel(context) {
                 vat += 1265000.0
             }
         }
-//        if (vat - taxPaid < 0) {
-//            vat = abs(vat-taxPaid)
-//        }
         return vat-taxPaid
     }
 

@@ -40,7 +40,7 @@ class IncomeFragment() : BaseFragment() {
         }
 
         viewModel.incomeList.observe(viewLifecycleOwner, { list ->
-            adapter.updateList(list.map { IncomeData(it.income, it.incomeVAT) })
+            adapter.updateList(list.map { IncomeData(it.type,it.income, it.incomeVAT) })
         })
 
 

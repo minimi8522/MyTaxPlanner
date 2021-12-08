@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 data class IncomeDataEntity(
     @PrimaryKey(autoGenerate = true)
     val id : Int = 0,
+    val type : Int,
     val income : Double,
     val incomeVAT : Double)
 

@@ -1,11 +1,15 @@
 package com.example.mytaxplanner.fragment
 
+import android.R
 import android.os.Bundle
 import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.get
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.mytaxplanner.databinding.FragmentAddIncomeBinding
@@ -16,6 +20,9 @@ import com.example.mytaxplanner.viewmodel.SharedViewModel
 
 class AddIncomeFragment : BaseFragment() {
     private lateinit var binding: FragmentAddIncomeBinding
+
+    private var selectType : Int = 0
+    private var typeList = listOf<String>("เงินเดือน","ค่าจ้าง","ค่าลิขสิทธิ","ดอกเบี้ยและเงินปันผล","ค่าเช่า","วิชาชีพอิสระ","ค่ารับเหมา","อื่นๆ")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,13 +36,23 @@ class AddIncomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            etType.inputType = InputType.TYPE_CLASS_NUMBER
+            spType.adapter = ArrayAdapter<String>(requireContext(), R.layout.simple_list_item_1, typeList)
             etIncome.filters = arrayOf(DecimalDigitsInputFilter(null,2))
             etDeduct.filters = arrayOf(DecimalDigitsInputFilter(null,2))
 
+            spType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                    selectType = position
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+//                    TODO("Not yet implemented")
+                }
+
+            }
             btnConfirm.setOnClickListener {
-                if (etType.text.isNotEmpty() && etIncome.text.isNotEmpty() && etDeduct.text.isNotEmpty()) {
-                    viewModel.addIncomeData(etIncome.text.toString().toDouble() , etDeduct.text.toString().toDouble())
+                if (/*!selectType.isNullOrEmpty() &&*/ etIncome.text.isNotEmpty() && etDeduct.text.isNotEmpty()) {
+                    viewModel.addIncomeData(selectType,etIncome.text.toString().toDouble() , etDeduct.text.toString().toDouble())
                     requireActivity().supportFragmentManager.popBackStack()
                 } else {
                     val builder = AlertDialog.Builder(requireContext())

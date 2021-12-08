@@ -70,5 +70,16 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:text="123456" />
 
+        <TextView
+            android:id="@+id/tvIncomeType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:padding="8dp"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintTop_toBottomOf="@id/tvTaxPaid"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="ประเภท" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

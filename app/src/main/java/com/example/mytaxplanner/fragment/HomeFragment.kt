@@ -23,14 +23,14 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.incomeList.observe(viewLifecycleOwner, { list ->
-            binding.tvIncome.text = viewModel.calculateTaxIncome().toString()
-            binding.tvTaxPaid.text = viewModel.calculateTaxPaid(list).toString()
+            binding.tvIncome.text = String.format("%,.2f", viewModel.calculateTaxIncome())
+            binding.tvTaxPaid.text = String.format("%,.2f", viewModel.calculateTaxPaid(list))
             binding.vatValue.text = viewModel.vatValue()
         })
         viewModel.deductList.observe(viewLifecycleOwner,{
-            binding.tvIncome.text = viewModel.calculateTaxIncome().toString()
+            binding.tvIncome.text = String.format("%,.2f", viewModel.calculateTaxIncome())
             binding.vatValue.text = viewModel.vatValue()
         })
     }
-//    TODO("คำนวณภาษีตามขั้นบันได")
+//    TODO("แก้บัค")
 }
