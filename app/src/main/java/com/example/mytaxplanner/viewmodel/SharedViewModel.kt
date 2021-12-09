@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.mytaxplanner.model.DeductData
+import com.example.mytaxplanner.model.TypeDeductList
 import com.example.mytaxplanner.model.entity.DeductDataEntity
 import com.example.mytaxplanner.model.entity.IncomeDataEntity
 import com.example.mytaxplanner.repository.TaxPlannerDatabase
@@ -57,7 +58,7 @@ class SharedViewModel(val context: Application) : AndroidViewModel(context) {
     fun addDeductData(deductType: Int, deductVal: Double) {
 //        _deductList.value?.add(DeductData(deductType,deductVal))
 
-        val data = DeductData(deductType, deductVal)
+        val data = DeductData(deductType, deductVal,TypeDeductList.data[deductType].deductionMax)
 
         viewModelScope.launch(Dispatchers.IO) {
 

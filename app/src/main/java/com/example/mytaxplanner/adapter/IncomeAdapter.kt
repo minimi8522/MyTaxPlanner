@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mytaxplanner.databinding.CardIncomeBinding
 import com.example.mytaxplanner.model.IncomeData
+import com.example.mytaxplanner.model.TypeIncomeList
 
 class IncomeAdapter(var incomeDataList: List<IncomeData>) : RecyclerView.Adapter<IncomeAdapter.ViewHolder>() {
-    private var typeList = listOf<String>("เงินเดือน","ค่าจ้าง","ค่าลิขสิทธิ","ดอกเบี้ยและเงินปันผล","ค่าเช่า","วิชาชีพอิสระ","ค่ารับเหมา","อื่นๆ")
+    private var typeList = TypeIncomeList.data
 
     inner class ViewHolder(view : CardIncomeBinding) : RecyclerView.ViewHolder(view.root) {
         val getIncome = view.tvIncome
@@ -24,7 +25,7 @@ class IncomeAdapter(var incomeDataList: List<IncomeData>) : RecyclerView.Adapter
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.getIncome.text = "${incomeDataList[position].income}  บาท"
         holder.getTaxPaid.text = "${incomeDataList[position].incomeVAT}  บาท"
-        holder.getTaxType.text = typeList[incomeDataList[position].type]
+        holder.getTaxType.text = typeList[incomeDataList[position].type].description
     }
 
     override fun getItemCount(): Int {

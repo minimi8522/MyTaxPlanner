@@ -13,6 +13,7 @@ import androidx.core.view.get
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.mytaxplanner.databinding.FragmentAddIncomeBinding
+import com.example.mytaxplanner.model.TypeIncomeList
 import com.example.mytaxplanner.model.entity.IncomeDataEntity
 import com.example.mytaxplanner.repository.TaxPlannerDatabase
 import com.example.mytaxplanner.util.DecimalDigitsInputFilter
@@ -22,7 +23,7 @@ class AddIncomeFragment : BaseFragment() {
     private lateinit var binding: FragmentAddIncomeBinding
 
     private var selectType : Int = 0
-    private var typeList = listOf<String>("เงินเดือน","ค่าจ้าง","ค่าลิขสิทธิ","ดอกเบี้ยและเงินปันผล","ค่าเช่า","วิชาชีพอิสระ","ค่ารับเหมา","อื่นๆ")
+    private var typeList = TypeIncomeList.data
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +37,9 @@ class AddIncomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            spType.adapter = ArrayAdapter<String>(requireContext(), R.layout.simple_list_item_1, typeList)
+            val data = mutableListOf<String>()
+            typeList.forEach { data.add(it.description) }
+            spType.adapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1, data)
             etIncome.filters = arrayOf(DecimalDigitsInputFilter(null,2))
             etDeduct.filters = arrayOf(DecimalDigitsInputFilter(null,2))
 
