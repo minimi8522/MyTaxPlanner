@@ -24,14 +24,26 @@
         android:padding="8dp">
 
         <TextView
+            android:id="@+id/typeText"
+            android:padding="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/type"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textStyle="bold"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+        <TextView
             android:id="@+id/incomeText"
             android:padding="8dp"
             android:layout_marginStart="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/income"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/typeText"
             app:layout_constraintStart_toStartOf="parent"
+            android:textStyle="bold"
             android:textAppearance="?attr/textAppearanceHeadline6" />
 
         <TextView
@@ -42,8 +54,8 @@
             android:maxLines="1"
             android:padding="8dp"
             android:textAppearance="?attr/textAppearanceHeadline6"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/incomeText"
+            app:layout_constraintStart_toEndOf="@id/guideline3"
+            app:layout_constraintTop_toTopOf="@id/incomeText"
             tools:text="123456" />
 
         <TextView
@@ -55,6 +67,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvIncome"
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/withholding_tax"
+            android:textStyle="bold"
             android:textAppearance="?attr/textAppearanceHeadline6" />
 
 
@@ -66,8 +79,8 @@
             android:layout_marginStart="8dp"
             android:padding="8dp"
             android:textAppearance="?attr/textAppearanceHeadline6"
-            app:layout_constraintTop_toBottomOf="@id/taxPaidText"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/taxPaidText"
+            app:layout_constraintStart_toEndOf="@id/guideline3"
             tools:text="123456" />
 
         <TextView
@@ -77,9 +90,16 @@
             android:layout_marginStart="8dp"
             android:padding="8dp"
             android:textAppearance="?attr/textAppearanceHeadline6"
-            app:layout_constraintTop_toBottomOf="@id/tvTaxPaid"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="ประเภท" />
+            app:layout_constraintTop_toTopOf="@id/typeText"
+            app:layout_constraintStart_toEndOf="@id/typeText"
+            tools:text="อะไร" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="150dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

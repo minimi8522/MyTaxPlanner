@@ -30,6 +30,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDeduct" />
 
+    <TextView
+        android:id="@+id/tvMaxDeduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:text="@string/deduct_max"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/valDeduct" />
+
 <!--    <TextView-->
 <!--        android:id="@+id/tvTaxPaid"-->
 <!--        android:layout_width="wrap_content"-->
@@ -67,6 +79,20 @@
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/valDeduct" />
 
+    <TextView
+        android:id="@+id/tvMaxDeductVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvMaxDeduct"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/tvMaxDeduct"
+        tools:text="number"/>
+
 <!--    <EditText-->
 <!--        android:id="@+id/etDeduct"-->
 <!--        android:layout_width="0dp"-->
@@ -89,7 +115,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDeduct" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMaxDeductVal" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -99,11 +125,6 @@
         app:layout_constraintGuide_percent="0.33"
         />
 
-<!--    <Spinner-->
-<!--        android:id="@+id/spinner"-->
-<!--        android:layout_width="409dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        tools:layout_editor_absoluteX="-54dp"-->
-<!--        tools:layout_editor_absoluteY="353dp" />-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

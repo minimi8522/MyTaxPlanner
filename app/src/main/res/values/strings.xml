@@ -29,4 +29,6 @@
     <string name="choose_file">เลือกเอกสาร</string>
     <string name="file">เอกสาร :</string>
     <string name="normal">ปกติ</string>
+
+    <string name="warning">แจ้งเตือน</string>
 </resources>

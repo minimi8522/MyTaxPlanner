@@ -1,9 +1,7 @@
 package com.example.mytaxplanner.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.mytaxplanner.model.DeductData
 import com.example.mytaxplanner.model.TypeDeductList
 import com.example.mytaxplanner.model.entity.DeductDataEntity
@@ -39,12 +37,20 @@ class SharedViewModel(val context: Application) : AndroidViewModel(context) {
 
     var deductList: LiveData<List<DeductDataEntity>>
 
+    var calculateTaxIncome : MediatorLiveData<Double> = MediatorLiveData()
+
     init {
         incomeList = db.getIncome()
         deductList = db.getDeduct()
 
-//        _incomeList.value = db.getIncome().
-//        _deductList.value = mutableListOf()
+        calculateTaxIncome.addSource(incomeList) {
+            calculateTaxIncome.value = calculateTaxIncome()
+
+        }
+
+        calculateTaxIncome.addSource(deductList) {
+            calculateTaxIncome.value = calculateTaxIncome()
+        }
     }
 
     fun addIncomeData(type:Int,income: Double, incomeVAT: Double) {
@@ -103,6 +109,9 @@ class SharedViewModel(val context: Application) : AndroidViewModel(context) {
         val income = calculateIncome(incomeList.value)
         val taxPaid = calculateTaxPaid(incomeList.value)
         val deduct = calculateDeduct(deductList.value)
+        if(deduct > income){
+            return -taxPaid
+        }
         var vat = 0.0
 
         if(income == 0.0 && deduct > 0.0 ){
@@ -149,10 +158,96 @@ class SharedViewModel(val context: Application) : AndroidViewModel(context) {
     fun calculateIncome(list: List<IncomeDataEntity>?): Double {
         return if (list != null) {
             var sum = 0.0
+            var type_1_2 = 0.0
+            var type3 = 0.0
+
             list.forEach {
-                sum += it.income
+                when (it.type){
+
+                    //ประเภท 1 และ 2
+                    0,1 -> {
+                        type_1_2 += it.income
+                    }
+
+                    //ประเภท 3
+                    2,3 -> {
+                        type3 += it.income
+                    }
+
+                    //ประเภท 5
+                    5,8 ->{
+                        sum += it.income * 0.3
+                    }
+                    6,10 ->{
+                        sum +=it.income * 0.2
+                    }
+                    7 ->{
+                        sum += it.income * 0.15
+                    }
+                    9 ->{
+                        sum += it.income * 0.1
+                    }
+
+                    //ประเภท 6
+                    11 ->{
+                        sum += it.income * 0.6
+                    }
+                    12 ->{
+                        sum += it.income * 0.3
+                    }
+
+                    //ประเภท 7
+                    13 ->{
+                        sum += it.income * 0.6
+                    }
+                    //ประเภท 8
+                    15 ->{
+                        //TODO เงื่อนไขนอกเมือง
+                        sum += it.income * 0.5
+                    }
+                    16 ->{
+                        //TODO เงื่อนไขตามปีที่ถือ
+                        sum += it.income * 0.3
+                    }
+                    17 ->{
+                        var modelTaxPrice = 0.0
+                        if(it.income <= 300000.0){
+                            modelTaxPrice += it.income * 0.6
+                        }else{
+                            var calPrice = it.income - 300000
+                            modelTaxPrice += (calPrice * 0.4) + (300000 * 0.6)
+                            if(modelTaxPrice > 600000.0){
+                                modelTaxPrice = 600000.0
+                            }
+                        }
+                        sum += modelTaxPrice
+                    }
+                    18,19 ->{
+                        sum += it.income * 0.6
+                    }
+                    20 ->{
+                        //Todo ถ้าเช็คหลักฐานได้ควรมีหักค่าใช้่จ่าย
+                        sum += it.income
+                    }
+
+                    // Type4,14
+                    else -> {
+                        sum += it.income
+                    }
+                }
             }
-            sum
+            if(type_1_2 / 2.0 > 100000.0  ){
+                type_1_2 -= 100000.0
+            }else{
+                type_1_2 /= 2.0
+            }
+            if(type3 / 2.0 > 100000.0  ){
+                type3 -= 100000.0
+            }else{
+                type3 /= 2.0
+            }
+            sum + type_1_2 + type3
+
         } else {
             0.0
         }
@@ -161,6 +256,8 @@ class SharedViewModel(val context: Application) : AndroidViewModel(context) {
     fun calculateTaxPaid(list: List<IncomeDataEntity>?): Double {
         return if (list != null) {
             var sum = 0.0
+
+
             list.forEach {
                 sum += it.incomeVAT
             }
@@ -188,12 +285,15 @@ class SharedViewModel(val context: Application) : AndroidViewModel(context) {
             if(calculateDeduct(deductList.value)>calculateIncome(incomeList.value)){
                 return 0.0
             }
-            incomeList.value!!.forEach {
-                sum += it.income
-            }
-            deductList.value!!.forEach {
-                sum -= it.deduction
-            }
+//            incomeList.value!!.forEach {
+//                sum += it.income
+//            }
+            sum += calculateIncome(incomeList.value)
+
+//            deductList.value!!.forEach {
+//                sum -= it.deduction
+//            }
+            sum -= calculateDeduct(deductList.value)
             return sum
         } else if (incomeList.value != null && deductList.value == null) {
             return calculateIncome(incomeList.value)

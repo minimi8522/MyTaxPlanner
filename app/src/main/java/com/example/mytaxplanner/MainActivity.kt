@@ -51,5 +51,9 @@ class MainActivity : AppCompatActivity() {
         }
         binding.bottomNavigation.selectedItemId = R.id.fragment_home
         viewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
+
+        viewModel.calculateTaxIncome.observe(this, {
+
+        })
     }
 }

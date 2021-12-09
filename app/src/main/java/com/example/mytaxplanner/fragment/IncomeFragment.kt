@@ -1,5 +1,6 @@
 package com.example.mytaxplanner.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +26,7 @@ class IncomeFragment() : BaseFragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.incomeRecycle.layoutManager = LinearLayoutManager(requireContext())
@@ -43,17 +45,10 @@ class IncomeFragment() : BaseFragment() {
             adapter.updateList(list.map { IncomeData(it.type,it.income, it.incomeVAT) })
         })
 
+        viewModel.calculateTaxIncome.observe(viewLifecycleOwner, {
+            binding.tvIncomeResult.text = "$it บาท"
+        })
 
-    }
-    companion object {
 
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            IncomeFragment().apply {
-                arguments = Bundle().apply {
-//                    putString(ARG_PARAM1, param1)
-//                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

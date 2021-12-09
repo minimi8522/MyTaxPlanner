@@ -36,6 +36,7 @@ class AddDeductFragment : BaseFragment() {
             spType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
                     selectType = position
+                    tvMaxDeductVal.text = typeList[selectType].deductionMax.toString()
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -46,9 +47,22 @@ class AddDeductFragment : BaseFragment() {
 
 
             btnConfirm.setOnClickListener {
-                if (/*!selectType.isNullOrEmpty() &&*/ etDeduct.text.isNotEmpty()) {
-                    viewModel.addDeductData(selectType , etDeduct.text.toString().toDouble())
-                    requireActivity().supportFragmentManager.popBackStack()
+                if (etDeduct.text.isNotEmpty()) {
+                    if(etDeduct.text.toString().toDouble() > tvMaxDeductVal.text.toString().toDouble()){
+                        val builder = AlertDialog.Builder(requireContext())
+                        builder.setTitle("แจ้งเตือน")
+                        builder.setMessage("")
+                        builder.setIcon(android.R.drawable.ic_dialog_alert)
+                        builder.setCancelable(false)
+                        builder.setPositiveButton("Yes"){dialogInterface, which ->
+                            dialogInterface.dismiss()
+                        }.show()
+
+                    } else {
+                        viewModel.addDeductData(selectType , etDeduct.text.toString().toDouble())
+                        requireActivity().supportFragmentManager.popBackStack()
+                    }
+
                 } else {
                     val builder = AlertDialog.Builder(requireContext())
                     builder.setTitle("แจ้งเตือน")

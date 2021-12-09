@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mytaxplanner.BuildConfig
 import com.example.mytaxplanner.databinding.CardIncomeBinding
 import com.example.mytaxplanner.model.IncomeData
 import com.example.mytaxplanner.model.TypeIncomeList

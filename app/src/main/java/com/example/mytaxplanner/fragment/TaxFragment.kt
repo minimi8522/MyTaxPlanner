@@ -48,7 +48,12 @@ class TaxFragment : BaseFragment() {
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment,PersonalTaxFragment())?.addToBackStack(null)?.commit()
         }
         viewModel.deductList.observe(viewLifecycleOwner, { list ->
-            adapter.updateList(list.map { DeductData(it.deductType, it.deduction,TypeDeductList.data[it.deductType].deductionMax) })
+            if (list.isNotEmpty()) {
+                adapter.updateList(list.map { DeductData(it.deductType, it.deduction,TypeDeductList.data[it.deductType].deductionMax) })
+                binding.imgEmpty.visibility = View.GONE
+            } else {
+                binding.imgEmpty.visibility = View.VISIBLE
+            }
         })
 
 //        val db = TaxPlannerDatabase.getInstance(requireContext()).taxPlannerDao

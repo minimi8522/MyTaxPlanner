@@ -54,16 +54,29 @@ class AddIncomeFragment : BaseFragment() {
 
             }
             btnConfirm.setOnClickListener {
-                if (/*!selectType.isNullOrEmpty() &&*/ etIncome.text.isNotEmpty() && etDeduct.text.isNotEmpty()) {
-                    viewModel.addIncomeData(selectType,etIncome.text.toString().toDouble() , etDeduct.text.toString().toDouble())
-                    requireActivity().supportFragmentManager.popBackStack()
+                if (etIncome.text.isNotEmpty() && etDeduct.text.isNotEmpty()) {
+                    if (etDeduct.text.toString().toDouble() > etIncome.text.toString().toDouble()) {
+                        val builder = AlertDialog.Builder(requireContext())
+                        builder.setTitle("แจ้งเตือน")
+                        builder.setMessage("รายได้ต้องมากกว่าหัก ณ ที่จ่าย")
+                        builder.setIcon(android.R.drawable.ic_dialog_alert)
+                        builder.setCancelable(false)
+                        builder.setPositiveButton("เข้าใจแล้ว"){dialogInterface, which ->
+                            dialogInterface.dismiss()
+                        }.show()
+                    } else {
+                        viewModel.addIncomeData(selectType,etIncome.text.toString().toDouble() , etDeduct.text.toString().toDouble())
+                        requireActivity().supportFragmentManager.popBackStack()
+                    }
+
+
                 } else {
                     val builder = AlertDialog.Builder(requireContext())
                     builder.setTitle("แจ้งเตือน")
                     builder.setMessage("กรุณาระบุให้ครบ")
                     builder.setIcon(android.R.drawable.ic_dialog_alert)
                     builder.setCancelable(false)
-                    builder.setPositiveButton("Yes"){dialogInterface, which ->
+                    builder.setPositiveButton("เข้าใจแล้ว"){dialogInterface, which ->
                         dialogInterface.dismiss()
                     }.show()
                 }
