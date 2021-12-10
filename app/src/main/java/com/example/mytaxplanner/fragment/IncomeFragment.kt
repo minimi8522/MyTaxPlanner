@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mytaxplanner.R
 import com.example.mytaxplanner.adapter.IncomeAdapter
 import com.example.mytaxplanner.databinding.FragmentIncomeBinding
+import com.example.mytaxplanner.model.DeductData
 import com.example.mytaxplanner.model.IncomeData
+import com.example.mytaxplanner.model.TypeDeductList
 
 class IncomeFragment() : BaseFragment() {
 
@@ -42,7 +44,13 @@ class IncomeFragment() : BaseFragment() {
         }
 
         viewModel.incomeList.observe(viewLifecycleOwner, { list ->
-            adapter.updateList(list.map { IncomeData(it.type,it.income, it.incomeVAT) })
+            if (list.isNotEmpty()) {
+                adapter.updateList(list.map { IncomeData(it.type,it.income, it.incomeVAT)})
+                binding.imgEmpty.visibility = View.GONE
+            } else {
+                binding.imgEmpty.visibility = View.VISIBLE
+            }
+
         })
 
         viewModel.calculateTaxIncome.observe(viewLifecycleOwner, {

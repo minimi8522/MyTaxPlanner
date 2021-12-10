@@ -270,8 +270,53 @@ class SharedViewModel(val context: Application) : AndroidViewModel(context) {
     fun calculateDeduct(list: List<DeductDataEntity>?): Double {
         return if (list != null) {
             var sum = 0.0
+
+
             list.forEach {
-                sum += it.deduction
+                when(it.deductType){
+                    //ครอบครัว
+                    0,3,7 ->{
+                        sum += it.deduction
+                    }
+                    1,2 ->{
+                        //ไม่เกิน4
+                        sum += it.deduction
+                    }
+                    4 ->{
+                        //ลูกแท้ๆ อาจต้องเช็คปี
+                        sum += it.deduction
+                    }
+                    5,6 -> {
+                        //เช็คจำนวนคน
+                        sum += it.deduction
+                    }
+
+                    //ประกัน
+                    9,10,11 ->{
+                        //เช็คเงื่อนไข  9+11รวมกันไม่เกิน100000 10ไม่เกิน200000นำไปหักส่วนบนก่อน
+                        sum += it.deduction
+                    }
+                    8,12,13 ->{
+                        sum += it.deduction
+                    }
+
+                    //กองทุน
+                    14,15,16,17,18,19 ->{
+                        //ไม่เกินเปอเซนของเงินคำนวณ รวมกันไม่เกิน500000
+                        sum += it.deduction
+                    }
+
+                    20 ->{
+                        sum += it.deduction
+                    }
+                    21,22 ->{
+                        //ไม่เกินเปอ
+                        sum += it.deduction
+                    }
+                    23->{
+                        sum += it.deduction
+                    }
+                }
             }
             sum
         } else {

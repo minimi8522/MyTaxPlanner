@@ -30,13 +30,13 @@ class AddDeductFragment : BaseFragment() {
 
         binding.apply {
             val data = mutableListOf<String>()
-            typeList.forEach { data.add(it.description) }
+            typeList.forEach {if(it.type>7) data.add(it.description) }
             spType.adapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1, data)
             etDeduct.filters = arrayOf(DecimalDigitsInputFilter(null,2))
             spType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
                     selectType = position
-                    tvMaxDeductVal.text = typeList[selectType].deductionMax.toString()
+                    tvMaxDeductVal.text = typeList[selectType+8].deductionMax.toString()
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -48,21 +48,9 @@ class AddDeductFragment : BaseFragment() {
 
             btnConfirm.setOnClickListener {
                 if (etDeduct.text.isNotEmpty()) {
-                    if(etDeduct.text.toString().toDouble() > tvMaxDeductVal.text.toString().toDouble()){
-                        val builder = AlertDialog.Builder(requireContext())
-                        builder.setTitle("แจ้งเตือน")
-                        builder.setMessage("")
-                        builder.setIcon(android.R.drawable.ic_dialog_alert)
-                        builder.setCancelable(false)
-                        builder.setPositiveButton("Yes"){dialogInterface, which ->
-                            dialogInterface.dismiss()
-                        }.show()
 
-                    } else {
-                        viewModel.addDeductData(selectType , etDeduct.text.toString().toDouble())
-                        requireActivity().supportFragmentManager.popBackStack()
-                    }
-
+                    viewModel.addDeductData(selectType+8 , etDeduct.text.toString().toDouble())
+                    requireActivity().supportFragmentManager.popBackStack()
                 } else {
                     val builder = AlertDialog.Builder(requireContext())
                     builder.setTitle("แจ้งเตือน")
