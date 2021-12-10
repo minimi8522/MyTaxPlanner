@@ -39,4 +39,16 @@
     <style name="my_dialogTheme" parent="ThemeOverlay.AppCompat.Dialog">
 
     </style>
+
+    <style name="AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="android:fontFamily">@font/fc_subject_rounded_regular</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.App.Title.Text</item>
+    </style>
+
+
+    <style name="MaterialAlertDialog.App.Title.Text" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:fontFamily">@font/fc_subject_rounded_bold</item>
+    </style>
+
+
 </resources>

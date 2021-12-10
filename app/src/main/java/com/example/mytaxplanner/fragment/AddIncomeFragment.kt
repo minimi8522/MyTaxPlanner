@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.mytaxplanner.R
 import com.example.mytaxplanner.databinding.FragmentAddIncomeBinding
 import com.example.mytaxplanner.model.TypeIncomeList
 import com.example.mytaxplanner.util.DecimalDigitsInputFilter
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class AddIncomeFragment : BaseFragment() {
     private lateinit var binding: FragmentAddIncomeBinding
@@ -49,29 +51,34 @@ class AddIncomeFragment : BaseFragment() {
             btnConfirm.setOnClickListener {
                 if (etIncome.text.isNotEmpty() && etDeduct.text.isNotEmpty()) {
                     if (etDeduct.text.toString().toDouble() > etIncome.text.toString().toDouble()) {
-                        val builder = AlertDialog.Builder(requireContext())
-                        builder.setTitle("แจ้งเตือน")
-                        builder.setMessage("รายได้ต้องมากกว่าหัก ณ ที่จ่าย")
-                        builder.setIcon(android.R.drawable.ic_dialog_alert)
-                        builder.setCancelable(false)
-                        builder.setPositiveButton("เข้าใจแล้ว"){dialogInterface, which ->
-                            dialogInterface.dismiss()
-                        }.show()
+                        val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialogTheme).apply {
+                            setTitle("แจ้งเตือน")
+                            setMessage("รายได้ต้องมากกว่าหัก ณ ที่จ่าย")
+                            setIcon(R.drawable.ic_round_warning_24)
+                            setCancelable(false)
+                            setPositiveButton("เข้าใจแล้ว"){ dialogInterface, which ->
+                                dialogInterface.dismiss()
+                            }
+                        }
+                        dialog.show()
                     } else {
                         viewModel.addIncomeData(selectType,etIncome.text.toString().toDouble() , etDeduct.text.toString().toDouble())
+                        Toast.makeText(requireContext(),"เพิ่มรายการรายได้เรียบร้อย!!", Toast.LENGTH_SHORT).show()
                         requireActivity().supportFragmentManager.popBackStack()
                     }
 
 
                 } else {
-                    val builder = AlertDialog.Builder(requireContext())
-                    builder.setTitle("แจ้งเตือน")
-                    builder.setMessage("กรุณาระบุให้ครบ")
-                    builder.setIcon(android.R.drawable.ic_dialog_alert)
-                    builder.setCancelable(false)
-                    builder.setPositiveButton("เข้าใจแล้ว"){dialogInterface, which ->
-                        dialogInterface.dismiss()
-                    }.show()
+                    val builder = MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialogTheme).apply {
+                        setTitle("แจ้งเตือน")
+                        setMessage("กรุณาระบุให้ครบ")
+                        setIcon(R.drawable.ic_round_warning_24)
+                        setCancelable(false)
+                        setPositiveButton("เข้าใจแล้ว"){ dialogInterface, which ->
+                            dialogInterface.dismiss()
+                        }
+                    }
+                    builder.show()
                 }
             }
         }
