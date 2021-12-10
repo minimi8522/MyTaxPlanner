@@ -35,7 +35,8 @@ class TaxFragment : BaseFragment() {
         }).attachToRecyclerView(binding.deductRecycle)
 
         binding.btnAdd.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment,AddDeductFragment())?.addToBackStack(null)?.commit()
+            val dialog = AddDeductFragment()
+            dialog.show(requireActivity().supportFragmentManager, "addDeduct")
         }
         binding.btnProfile.setOnClickListener {
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment,PersonalTaxFragment())?.addToBackStack(null)?.commit()

@@ -39,7 +39,8 @@ class IncomeFragment() : BaseFragment() {
         }).attachToRecyclerView(binding.incomeRecycle)
 
         binding.button4.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment,AddIncomeFragment())?.addToBackStack(null)?.commit()
+            val dialog = AddIncomeFragment()
+            dialog.show(requireActivity().supportFragmentManager, "addIncome")
         }
 
         viewModel.incomeList.observe(viewLifecycleOwner, { list ->

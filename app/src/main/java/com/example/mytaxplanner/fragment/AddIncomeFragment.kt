@@ -8,14 +8,18 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.mytaxplanner.R
 import com.example.mytaxplanner.databinding.FragmentAddIncomeBinding
 import com.example.mytaxplanner.model.TypeIncomeList
 import com.example.mytaxplanner.util.DecimalDigitsInputFilter
+import com.example.mytaxplanner.viewmodel.SharedViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-class AddIncomeFragment : BaseFragment() {
+class AddIncomeFragment : DialogFragment() {
     private lateinit var binding: FragmentAddIncomeBinding
+    protected lateinit var viewModel: SharedViewModel
 
     private var selectType : Int = 0
     private var typeList = TypeIncomeList.data
@@ -25,11 +29,27 @@ class AddIncomeFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddIncomeBinding.inflate(layoutInflater)
+        dialog?.setCanceledOnTouchOutside(true)
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        requireDialog().window?.apply {
+            this.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel =  activity?.run {
+            ViewModelProvider(this).get(SharedViewModel::class.java)
+        } ?: throw Exception("Invalid Activity")
 
         binding.apply {
             val data = mutableListOf<String>()
@@ -64,7 +84,7 @@ class AddIncomeFragment : BaseFragment() {
                     } else {
                         viewModel.addIncomeData(selectType,etIncome.text.toString().toDouble() , etDeduct.text.toString().toDouble())
                         Toast.makeText(requireContext(),"เพิ่มรายการรายได้เรียบร้อย!!", Toast.LENGTH_SHORT).show()
-                        requireActivity().supportFragmentManager.popBackStack()
+                        dialog?.dismiss()
                     }
 
 

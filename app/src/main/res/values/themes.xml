@@ -34,7 +34,7 @@
     </style>
 
     <style name="AppTheme.CreateDialog" parent="Theme.MaterialComponents.Dialog">
-
+        <item name="android:theme">@style/Theme.MyTaxPlanner</item>
     </style>
     <style name="my_dialogTheme" parent="ThemeOverlay.AppCompat.Dialog">
 
