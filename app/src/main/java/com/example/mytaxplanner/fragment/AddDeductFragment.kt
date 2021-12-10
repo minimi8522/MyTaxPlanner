@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
+import com.example.mytaxplanner.R
 import com.example.mytaxplanner.databinding.FragmentAddDeductionBinding
 import com.example.mytaxplanner.model.TypeDeductList
 import com.example.mytaxplanner.util.DecimalDigitsInputFilter
@@ -31,7 +32,7 @@ class AddDeductFragment : BaseFragment() {
         binding.apply {
             val data = mutableListOf<String>()
             typeList.forEach {if(it.type>7) data.add(it.description) }
-            spType.adapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1, data)
+            spType.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item, data)
             etDeduct.filters = arrayOf(DecimalDigitsInputFilter(null,2))
             spType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {

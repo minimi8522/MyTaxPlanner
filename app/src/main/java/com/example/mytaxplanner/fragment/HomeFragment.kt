@@ -35,12 +35,11 @@ class HomeFragment : BaseFragment() {
             setWidth(BalloonSizeSpec.WRAP)
             setPadding(8)
             setHeight(BalloonSizeSpec.WRAP)
-            setArrowPosition(0.5f)
+            setArrowPosition(0.31f)
             setArrowSize(12)
             setCornerRadius(4f)
             setAlpha(1f)
             setLayout(R.layout.card_income_info)
-            setTextColorResource(R.color.white)
             setTextIsHtml(true)
             setBackgroundColorResource(R.color.teal_100)
             setBalloonAnimation(BalloonAnimation.FADE)
@@ -60,7 +59,6 @@ class HomeFragment : BaseFragment() {
             setCornerRadius(4f)
             setAlpha(1f)
             setLayout(R.layout.card_income_info)
-            setTextColorResource(R.color.white)
             setTextIsHtml(true)
             setBackgroundColorResource(R.color.teal_100)
             setBalloonAnimation(BalloonAnimation.FADE)
@@ -71,7 +69,7 @@ class HomeFragment : BaseFragment() {
         }
 
         binding.imvInfo1.setOnClickListener {
-            balloon1.showAlignBottom(it)
+            balloon1.showAlignBottom(it, 110)
         }
 
         binding.imvInfo2.setOnClickListener {

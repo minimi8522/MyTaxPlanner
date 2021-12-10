@@ -1,22 +1,18 @@
 package com.example.mytaxplanner.fragment
 
-import android.R
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.RadioGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.get
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import com.example.mytaxplanner.R
 import com.example.mytaxplanner.databinding.FragmentPersonalTaxBinding
 import com.example.mytaxplanner.model.TypeDeductList
-import com.example.mytaxplanner.util.DecimalDigitsInputFilter
-import com.example.mytaxplanner.viewmodel.SharedViewModel
+import com.google.android.material.datepicker.MaterialDatePicker
+import java.util.*
 
 class PersonalTaxFragment : BaseFragment() {
     private lateinit var binding: FragmentPersonalTaxBinding
@@ -39,7 +35,7 @@ class PersonalTaxFragment : BaseFragment() {
         binding.apply {
             val data = mutableListOf<String>()
             typeList.forEach { if (it.type <= 7) data.add(it.description) }
-            spType.adapter = ArrayAdapter(requireContext(), R.layout.simple_list_item_1, data)
+            spType.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item, data)
             spType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
                     selectType = position
@@ -65,6 +61,17 @@ class PersonalTaxFragment : BaseFragment() {
 //                    TODO("Not yet implemented")
                 }
 
+            }
+            val datePicker =
+                MaterialDatePicker.Builder.datePicker()
+                    .setTitleText("Select date")
+                    .build()
+
+            datePicker.addOnPositiveButtonClickListener {
+                etAge.setText(getDate(it))
+            }
+            ivCalendar.setOnClickListener {
+                datePicker.show(requireActivity().supportFragmentManager, "calendar")
             }
 
 //            binding.rgSick.setOnCheckedChangeListener(rgSick,rbNo){
@@ -96,6 +103,13 @@ class PersonalTaxFragment : BaseFragment() {
             }
 
         }
+    }
+
+    fun getDate(timestamp: Long): String {
+        val calendar = Calendar.getInstance(Locale.ENGLISH)
+        calendar.timeInMillis = timestamp
+        val date = DateFormat.format("yyyy-MM-dd", calendar).toString()
+        return date
     }
 }
 

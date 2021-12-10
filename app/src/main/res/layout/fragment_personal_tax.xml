@@ -196,6 +196,7 @@
         app:layout_constraintStart_toStartOf="parent" />
     <Spinner
         android:id="@+id/spType"
+
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -207,17 +208,31 @@
         app:layout_constraintTop_toTopOf="@+id/tvDeduct"
         app:layout_constraintVertical_bias="0.695" />
 
+    <ImageView
+        android:id="@+id/ivCalendar"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_baseline_calendar_month_24"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textAge"
+        app:layout_constraintEnd_toStartOf="@+id/etAge"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/textAge"
+        >
+
+    </ImageView>
+
     <EditText
         android:id="@+id/etAge"
         android:layout_width="0dp"
+        android:enabled="false"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/fc_subject_rounded_regular"
-        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/textAge"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toEndOf="@+id/ivCalendar"
         app:layout_constraintTop_toTopOf="@+id/textAge" />
 
     <TextView
@@ -263,6 +278,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/fc_subject_rounded_bold"
+        android:backgroundTint="@color/pink"
         android:text="@string/confirm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

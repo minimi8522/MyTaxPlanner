@@ -32,4 +32,11 @@
         // Set the theme of the Activity that directly follows your splash screen.
         <item name="postSplashScreenTheme">@style/Theme.MyTaxPlanner</item>  # Required.
     </style>
+
+    <style name="AppTheme.CreateDialog" parent="Theme.MaterialComponents.Dialog">
+
+    </style>
+    <style name="my_dialogTheme" parent="ThemeOverlay.AppCompat.Dialog">
+
+    </style>
 </resources>

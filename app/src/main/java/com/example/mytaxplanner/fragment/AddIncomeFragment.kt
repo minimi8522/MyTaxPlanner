@@ -1,23 +1,16 @@
 package com.example.mytaxplanner.fragment
 
-import android.R
 import android.os.Bundle
-import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.get
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import com.example.mytaxplanner.R
 import com.example.mytaxplanner.databinding.FragmentAddIncomeBinding
 import com.example.mytaxplanner.model.TypeIncomeList
-import com.example.mytaxplanner.model.entity.IncomeDataEntity
-import com.example.mytaxplanner.repository.TaxPlannerDatabase
 import com.example.mytaxplanner.util.DecimalDigitsInputFilter
-import com.example.mytaxplanner.viewmodel.SharedViewModel
 
 class AddIncomeFragment : BaseFragment() {
     private lateinit var binding: FragmentAddIncomeBinding
@@ -39,7 +32,7 @@ class AddIncomeFragment : BaseFragment() {
         binding.apply {
             val data = mutableListOf<String>()
             typeList.forEach { data.add(it.description) }
-            spType.adapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1, data)
+            spType.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item, data)
             etIncome.filters = arrayOf(DecimalDigitsInputFilter(null,2))
             etDeduct.filters = arrayOf(DecimalDigitsInputFilter(null,2))
 

@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:layout_marginStart="16dp"
         android:text="เงินได้"
         android:textColor="@color/blue"
         android:textSize="20sp"
@@ -29,21 +30,31 @@
         android:layout_marginStart="8dp"
         android:src="@drawable/icons8_info"
         app:layout_constraintBottom_toBottomOf="@+id/textIncomeReceive"
-        app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textIncomeReceive"
         app:layout_constraintTop_toTopOf="@+id/textIncomeReceive" />
+
+    <ImageView
+        android:id="@+id/imvsub1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_baseline_subdirectory_arrow_right_24"
+        app:layout_constraintStart_toStartOf="@+id/textIncomeReceive"
+        app:layout_constraintTop_toBottomOf="@+id/textIncomeReceive" />
 
     <TextView
         android:id="@+id/tvIncomeReceive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="@font/fc_subject_rounded_regular"
         android:textColor="@color/blue"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textIncomeReceive"
         tools:text="0.00 บาท" />
 
@@ -52,6 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
         android:fontFamily="@font/fc_subject_rounded_bold"
         android:text="ค่าลดหย่อน"
         android:textColor="@color/red"
@@ -71,21 +83,30 @@
         android:layout_marginStart="8dp"
         android:src="@drawable/icons8_info"
         app:layout_constraintBottom_toBottomOf="@+id/textDeduct"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textDeduct"
         app:layout_constraintTop_toTopOf="@+id/textDeduct" />
+
+    <ImageView
+        android:id="@+id/imvsub2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_baseline_subdirectory_arrow_right_24"
+        app:layout_constraintStart_toStartOf="@+id/textDeduct"
+        app:layout_constraintTop_toBottomOf="@+id/textDeduct" />
 
     <TextView
         android:id="@+id/tvDeduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="@font/fc_subject_rounded_regular"
         android:textColor="@color/red"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textDeduct"
         tools:text="0.00 บาท" />
 
@@ -94,13 +115,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
         android:fontFamily="@font/fc_subject_rounded_bold"
         android:text="เงินได้สุทธิ"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvDeduct" />
+
+    <ImageView
+        android:id="@+id/imvsub3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_baseline_subdirectory_arrow_right_24"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
     <TextView
@@ -108,11 +139,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/fc_subject_rounded_regular"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
         app:layout_constraintEnd_toStartOf="@+id/textView6"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
+
         tools:text="20000" />
 
     <TextView
@@ -120,18 +151,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/fc_subject_rounded_regular"
-        android:text="บาท"
-        android:textSize="16sp"
+        android:text=" บาท"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvIncome"
+
         app:layout_constraintTop_toBottomOf="@id/textView" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/fc_subject_rounded_bold"
         android:text="ภาษีหัก ณ ที่จ่าย "
         android:textSize="20sp"

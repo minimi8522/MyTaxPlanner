@@ -1,11 +1,10 @@
 package com.example.mytaxplanner.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.mytaxplanner.R
+import androidx.fragment.app.Fragment
 import com.example.mytaxplanner.databinding.FragmentInfoBinding
 
 private const val ARG_PARAM1 = "param1"
