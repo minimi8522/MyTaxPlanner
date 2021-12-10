@@ -25,71 +25,78 @@
 
         <TextView
             android:id="@+id/textDeductType"
-            android:padding="8dp"
-            android:layout_marginStart="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/fc_subject_rounded_bold"
+            android:padding="8dp"
             android:text="@string/deduct_type"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textAppearance="?attr/textAppearanceHeadline6"
             android:textStyle="bold"
-            android:textAppearance="?attr/textAppearanceHeadline6" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvDeductType"
-            android:padding="8dp"
-            android:layout_marginStart="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="test"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/fc_subject_rounded_regular"
+            android:padding="8dp"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toEndOf="@id/guideline3"
             app:layout_constraintTop_toTopOf="@id/textDeductType"
-            app:layout_constraintStart_toEndOf="@id/textDeductType"
-            android:textAppearance="?attr/textAppearanceHeadline6" />
+            tools:text="test" />
 
         <TextView
             android:id="@+id/textDeduct"
-            android:padding="8dp"
-            android:layout_marginStart="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/fc_subject_rounded_bold"
+            android:padding="8dp"
             android:text="@string/deduct"
-            app:layout_constraintTop_toBottomOf="@id/tvDeductType"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textAppearance="?attr/textAppearanceHeadline6"
             android:textStyle="bold"
-            android:textAppearance="?attr/textAppearanceHeadline6" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDeductType" />
+
         <TextView
             android:id="@+id/tvDeduct"
-            android:padding="8dp"
-            android:layout_marginStart="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="123456"
-            app:layout_constraintTop_toBottomOf="@id/tvDeductType"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/fc_subject_rounded_regular"
+            android:padding="8dp"
+            android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintStart_toEndOf="@id/guideline3"
-            android:textAppearance="?attr/textAppearanceHeadline6" />
+            app:layout_constraintTop_toBottomOf="@id/tvDeductType"
+            tools:text="123456" />
 
         <TextView
             android:id="@+id/textMaxDeduct"
-            android:padding="8dp"
-            android:layout_marginStart="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/tvDeduct"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/fc_subject_rounded_bold"
+            android:padding="8dp"
             android:text="@string/deduct_max"
+            android:textAppearance="?attr/textAppearanceHeadline6"
             android:textStyle="bold"
-            android:textAppearance="?attr/textAppearanceHeadline6" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDeduct" />
 
         <TextView
             android:id="@+id/tvMaxDeduct"
-            android:padding="8dp"
-            android:layout_marginStart="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/tvDeduct"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/fc_subject_rounded_regular"
+            android:padding="8dp"
+            android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintStart_toEndOf="@id/guideline3"
-            tools:text="123456"
-            android:textAppearance="?attr/textAppearanceHeadline6" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDeduct"
+            tools:text="123456" />
 
 <!--        <ImageView-->
 <!--            android:layout_width="50dp"-->
@@ -107,7 +114,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="158dp" />
+            app:layout_constraintGuide_begin="170dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

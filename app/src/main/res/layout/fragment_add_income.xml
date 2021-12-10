@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/teal_50"
     tools:context=".fragment.AddIncomeFragment">
 
     <TextView
         android:id="@+id/tvType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/fc_subject_rounded_bold"
+        android:text="@string/type"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:text="@string/type"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,11 +24,12 @@
         android:id="@+id/tvIncome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/fc_subject_rounded_bold"
+        android:text="@string/income"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:text="@string/income"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvType" />
 
@@ -36,9 +39,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
+        android:fontFamily="@font/fc_subject_rounded_bold"
+        android:text="@string/withholding_tax"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:text="@string/withholding_tax"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvIncome" />
 
@@ -61,12 +65,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
+        android:fontFamily="@font/fc_subject_rounded_regular"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/tvIncome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/tvIncome"
-        android:inputType="number"
-        />
+        app:layout_constraintTop_toTopOf="@+id/tvIncome" />
 
 
     <EditText
@@ -75,20 +79,22 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
+        android:fontFamily="@font/fc_subject_rounded_regular"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/tvTaxPaid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/tvTaxPaid"
-        android:inputType="number"/>
+        app:layout_constraintTop_toTopOf="@+id/tvTaxPaid" />
 
     <Button
         android:id="@+id/btnConfirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:fontFamily="@font/fc_subject_rounded_bold"
+        android:text="@string/accept"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:text="@string/accept"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

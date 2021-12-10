@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/teal_50"
     tools:context=".fragment.AddDeductFragment">
 
     <TextView
         android:id="@+id/tvDeduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/fc_subject_rounded_bold"
+        android:text="@string/type"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:text="@string/type"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,11 +24,12 @@
         android:id="@+id/valDeduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/fc_subject_rounded_bold"
+        android:text="@string/deduct"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:text="@string/deduct"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDeduct" />
 
@@ -34,11 +37,12 @@
         android:id="@+id/tvMaxDeduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/fc_subject_rounded_bold"
+        android:text="@string/deduct_max"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:text="@string/deduct_max"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/valDeduct" />
 
@@ -73,6 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
+        android:fontFamily="@font/fc_subject_rounded_regular"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/valDeduct"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,13 +90,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
+        android:fontFamily="@font/fc_subject_rounded_regular"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tvMaxDeduct"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/tvMaxDeduct"
-        tools:text="number"/>
+        tools:text="number" />
 
 <!--    <EditText-->
 <!--        android:id="@+id/etDeduct"-->
@@ -109,9 +115,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:fontFamily="@font/fc_subject_rounded_bold"
+        android:text="@string/accept"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:text="@string/accept"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
