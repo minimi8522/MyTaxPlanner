@@ -6,6 +6,7 @@
     <string name="fragment_home">หน้าหลัก</string>
     <string name="fragment_tax">ลดหย่อน</string>
     <string name="fragment_suggest">แนะนำ</string>
+    <string name="fragment_more">อื่นๆ</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="single">โสด</string>

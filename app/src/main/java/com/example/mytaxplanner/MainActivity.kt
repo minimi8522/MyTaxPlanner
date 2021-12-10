@@ -32,7 +32,10 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.fragment_home -> {
                     supportFragmentManager.beginTransaction().replace(R.id.fragment, HomeFragment()).commit()
-                    binding.topAppBar.setBackgroundColor(resources.getColor(R.color.teal_200,theme))
+                    binding.topAppBar.apply {
+                        setBackgroundColor(resources.getColor(R.color.teal_200,theme))
+                        title = getString(R.string.fragment_home)
+                    }
                     window.apply {
                         addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
                         statusBarColor = resources.getColor(R.color.teal_700,theme)
@@ -41,7 +44,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.fragment_income -> {
                     supportFragmentManager.beginTransaction().replace(R.id.fragment, IncomeFragment()).commit()
-                    binding.topAppBar.setBackgroundColor(resources.getColor(R.color.blue,theme))
+                    binding.topAppBar.apply {
+                        setBackgroundColor(resources.getColor(R.color.blue,theme))
+                        title = getString(R.string.fragment_income)
+                    }
                     window.apply {
                         addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
                         statusBarColor = resources.getColor(R.color.dark_blue,theme)
@@ -50,7 +56,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.fragment_tax -> {
                     supportFragmentManager.beginTransaction().replace(R.id.fragment, TaxFragment()).commit()
-                    binding.topAppBar.setBackgroundColor(resources.getColor(R.color.pink,theme))
+                    binding.topAppBar.apply {
+                        setBackgroundColor(resources.getColor(R.color.pink,theme))
+                        title = getString(R.string.fragment_tax)
+                    }
                     window.apply {
                         addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
                         statusBarColor = resources.getColor(R.color.dark_pink,theme)
@@ -59,7 +68,22 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.fragment_suggest -> {
                     supportFragmentManager.beginTransaction().replace(R.id.fragment, SuggestFragment()).commit()
-                    binding.topAppBar.setBackgroundColor(resources.getColor(R.color.teal_200,theme))
+                    binding.topAppBar.apply {
+                        setBackgroundColor(resources.getColor(R.color.teal_200,theme))
+                        title = getString(R.string.fragment_suggest)
+                    }
+                    window.apply {
+                        addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                        statusBarColor = resources.getColor(R.color.teal_700,theme)
+                    }
+                    true
+                }
+                R.id.fragment_more -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment, MoreFragment()).commit()
+                    binding.topAppBar.apply {
+                        setBackgroundColor(resources.getColor(R.color.teal_200,theme))
+                        title = getString(R.string.fragment_more)
+                    }
                     window.apply {
                         addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
                         statusBarColor = resources.getColor(R.color.teal_700,theme)
