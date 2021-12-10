@@ -2,20 +2,15 @@ package com.example.mytaxplanner.fragment
 
 import android.os.Bundle
 import android.view.*
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mytaxplanner.R
 import com.example.mytaxplanner.adapter.DeductAdapter
-import com.example.mytaxplanner.adapter.IncomeAdapter
 import com.example.mytaxplanner.databinding.FragmentTaxBinding
 import com.example.mytaxplanner.model.DeductData
-import com.example.mytaxplanner.model.IncomeData
 import com.example.mytaxplanner.model.TypeDeductList
-import com.example.mytaxplanner.repository.TaxPlannerDatabase
-import com.example.mytaxplanner.viewmodel.SharedViewModel
 
 class TaxFragment : BaseFragment() {
     private lateinit var binding: FragmentTaxBinding
@@ -53,5 +48,25 @@ class TaxFragment : BaseFragment() {
                 binding.imgEmpty.visibility = View.VISIBLE
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.single_info_menu, menu)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.icon_info -> {
+                Toast.makeText(requireContext(),"Tax info click", Toast.LENGTH_SHORT).show()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

@@ -26,11 +26,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.topAppBar)
+
         binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.fragment_home -> {
                     supportFragmentManager.beginTransaction().replace(R.id.fragment, HomeFragment()).commit()
-                    supportActionBar?.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.teal_200,theme)))
+                    binding.topAppBar.setBackgroundColor(resources.getColor(R.color.teal_200,theme))
                     window.apply {
                         addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
                         statusBarColor = resources.getColor(R.color.teal_700,theme)
@@ -39,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.fragment_income -> {
                     supportFragmentManager.beginTransaction().replace(R.id.fragment, IncomeFragment()).commit()
-                    supportActionBar?.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.blue,theme)))
+                    binding.topAppBar.setBackgroundColor(resources.getColor(R.color.blue,theme))
                     window.apply {
                         addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
                         statusBarColor = resources.getColor(R.color.dark_blue,theme)
@@ -48,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.fragment_tax -> {
                     supportFragmentManager.beginTransaction().replace(R.id.fragment, TaxFragment()).commit()
-                    supportActionBar?.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.pink,theme)))
+                    binding.topAppBar.setBackgroundColor(resources.getColor(R.color.pink,theme))
                     window.apply {
                         addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
                         statusBarColor = resources.getColor(R.color.dark_pink,theme)
@@ -57,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.fragment_suggest -> {
                     supportFragmentManager.beginTransaction().replace(R.id.fragment, SuggestFragment()).commit()
-                    supportActionBar?.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.teal_200,theme)))
+                    binding.topAppBar.setBackgroundColor(resources.getColor(R.color.teal_200,theme))
                     window.apply {
                         addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
                         statusBarColor = resources.getColor(R.color.teal_700,theme)
