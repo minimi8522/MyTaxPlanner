@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_50"
+    android:background="@color/light_blue"
     tools:context=".fragment.AddIncomeFragment">
 
     <TextView
@@ -92,6 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/fc_subject_rounded_bold"
+        android:backgroundTint="@color/dark_blue"
         android:text="@string/accept"
         android:textSize="16sp"
         android:textStyle="bold"

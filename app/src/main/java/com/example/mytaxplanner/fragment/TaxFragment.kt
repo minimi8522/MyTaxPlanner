@@ -1,9 +1,7 @@
 package com.example.mytaxplanner.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -55,8 +53,5 @@ class TaxFragment : BaseFragment() {
                 binding.imgEmpty.visibility = View.VISIBLE
             }
         })
-
-//        val db = TaxPlannerDatabase.getInstance(requireContext()).taxPlannerDao
-//        db.insertIncomeData()
     }
 }

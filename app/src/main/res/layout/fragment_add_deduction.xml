@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_50"
+    android:background="@color/light_pink"
     tools:context=".fragment.AddDeductFragment">
 
     <TextView
@@ -114,7 +114,7 @@
         android:id="@+id/btnConfirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/pink"
+        android:backgroundTint="@color/dark_pink"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/fc_subject_rounded_bold"
         android:text="@string/accept"
