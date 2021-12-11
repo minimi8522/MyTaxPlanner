@@ -1,6 +1,6 @@
 package com.example.mytaxplanner.model
 
-data class DeductData (val deductionType : Int ,val deduction : Double , val deductionMax : Double){
+data class DeductData (val deductionType : Int, var deduction : Double, val deductionMax : Double){
 }
 
 data class DeductType(val type : Int, val description : String, val deductionMax: Double)
@@ -12,9 +12,9 @@ object TypeDeductList {
         DeductType(1,"พ่อ / พ่อคู่สมรส",30000.0),
         DeductType(2,"แม่ / แม่คู่สมรส",30000.0),
         DeductType(3,"คู่สมรส ",60000.0),
-        DeductType(4,"ลูกแท้ๆ",60000.0),/*ลูกแท้ๆ เกิน25ต้องไร้ความสามารถ อายุไม่เกิน25ปี ก่อน2018 30000ทุกคน หลังคนแรก30000 คนถัดไป60000*/
-        DeductType(5,"ลูกบุญธรรม",30000.0),/*นับทุกคนไม่เกินคน3 */
-        DeductType(6,"ผู้พิการ/ทุพพลภาพ",60000.0),/*ได้คนเดียว*/
+        DeductType(4,"ลูกแท้ๆ",0.0),/*ลูกแท้ๆ เกิน25ต้องไร้ความสามารถ อายุไม่เกิน25ปี ก่อน2018 30000ทุกคน หลังคนแรก30000 คนถัดไป60000*/
+        DeductType(5,"ลูกบุญธรรม",0.0),/*นับทุกคนไม่เกินคน3 */
+        DeductType(6,"ผู้พิการ/ทุพพลภาพ",0.0),/*ได้คนเดียว*/
         DeductType(7,"ฝากครรภ์",60000.0),
 
         DeductType(8,"ประกันสังคม ",5100.0),/*ของปี64*/

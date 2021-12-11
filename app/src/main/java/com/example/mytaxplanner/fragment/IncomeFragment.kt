@@ -13,11 +13,16 @@ import com.example.mytaxplanner.databinding.FragmentIncomeBinding
 import com.example.mytaxplanner.model.DeductData
 import com.example.mytaxplanner.model.IncomeData
 import com.example.mytaxplanner.model.TypeDeductList
+import com.skydoves.balloon.Balloon
+import com.skydoves.balloon.BalloonAnimation
+import com.skydoves.balloon.BalloonSizeSpec
+import com.skydoves.balloon.createBalloon
 
 class IncomeFragment() : BaseFragment() {
 
     private lateinit var binding: FragmentIncomeBinding
     private val adapter = IncomeAdapter(listOf())
+    private lateinit var balloon1: Balloon
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,12 +62,30 @@ class IncomeFragment() : BaseFragment() {
             binding.tvIncomeResult.text = "$it บาท"
         })
 
+        balloon1 = createBalloon(requireContext()) {
+            setArrowSize(10)
+            setWidth(BalloonSizeSpec.WRAP)
+            setPadding(8)
+            setHeight(BalloonSizeSpec.WRAP)
+            setArrowPosition(0.31f)
+            setArrowSize(12)
+            setCornerRadius(4f)
+            setAlpha(1f)
+            setLayout(R.layout.card_income_info)
+            setTextIsHtml(true)
+            setBackgroundColorResource(R.color.teal_100)
+            setBalloonAnimation(BalloonAnimation.FADE)
+            setLifecycleOwner(lifecycleOwner)
+        }
+        balloon1.setOnBalloonOutsideTouchListener { _, _ ->
+            balloon1.dismiss()
+        }
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.single_info_menu, menu)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        inflater.inflate(R.menu.single_info_menu, menu)
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,7 +95,8 @@ class IncomeFragment() : BaseFragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.icon_info -> {
-                Toast.makeText(requireContext(),"Income info click",Toast.LENGTH_SHORT).show()
+                balloon1.showAlignTop(binding.root,0,0)
+                //Toast.makeText(requireContext(),"Income info click",Toast.LENGTH_SHORT).show()
                 true
             }
 

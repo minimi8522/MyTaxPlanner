@@ -14,7 +14,7 @@ class DeductAdapter(var deductDataList: List<DeductData>) : RecyclerView.Adapter
 
     inner class ViewHolder(view: CardDeductBinding) : RecyclerView.ViewHolder(view.root) {
         val getDeduct = view.tvDeduct
-        val getMax = view.tvMaxDeduct
+        //val getMax = view.tvMaxDeduct
         val getDeductType = view.tvDeductType
     }
 
@@ -24,7 +24,7 @@ class DeductAdapter(var deductDataList: List<DeductData>) : RecyclerView.Adapter
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.getDeduct.text = "${deductDataList[position].deduction} บาท"
-        holder.getMax.text = "${deductDataList[position].deductionMax} บาท"
+        //holder.getMax.text = "${deductDataList[position].deductionMax} บาท"
         holder.getDeductType.text = typeList[deductDataList[position].deductionType].description
     }
 

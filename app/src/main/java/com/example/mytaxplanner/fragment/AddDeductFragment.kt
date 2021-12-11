@@ -51,13 +51,14 @@ class AddDeductFragment : DialogFragment() {
 
         binding.apply {
             val data = mutableListOf<String>()
-            typeList.forEach {if(it.type>7) data.add(it.description) }
+            typeList.forEach {if(it.type>6) data.add(it.description) }
             spType.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item, data)
             etDeduct.filters = arrayOf(DecimalDigitsInputFilter(null,2))
             spType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
                     selectType = position
-                    tvMaxDeductVal.text = typeList[selectType+8].deductionMax.toString()
+                    //tvMaxDeductVal.text = typeList[selectType+7].deductionMax.toString()
+                    tvMaxDeductVal.text = viewModel.calculateDeductMax(typeList[selectType+7].type,viewModel.calculateTaxIncome.value!!).toString()
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -69,9 +70,40 @@ class AddDeductFragment : DialogFragment() {
 
             btnConfirm.setOnClickListener {
                 if (etDeduct.text.isNotEmpty()) {
-                    viewModel.addDeductData(selectType+8 , etDeduct.text.toString().toDouble())
-                    Toast.makeText(requireContext(),"เพิ่มรายการลดหย่อนเรียบร้อย!!", Toast.LENGTH_SHORT).show()
-                    dialog?.dismiss()
+                    if(typeList[selectType+7].type ==21){
+                        if(etDeduct.text.toString().toDouble()*2 > viewModel.calculateDeductMax(typeList[selectType+7].type,viewModel.calculateTaxIncome.value!!)){
+                            val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialogTheme).apply {
+                                setTitle("แจ้งเตือน")
+                                setMessage("ลดหย่อนเกินค่าสูงสุด")
+                                setIcon(R.drawable.ic_round_warning_24)
+                                setCancelable(false)
+                                setPositiveButton("เข้าใจแล้ว"){ dialogInterface, which ->
+                                    dialogInterface.dismiss()
+                                }
+                            }
+                            dialog.show()
+                        }
+                        else {
+                            viewModel.addDeductData(selectType+7 , etDeduct.text.toString().toDouble()*2,TypeDeductList.data[selectType+7].deductionMax)
+                            Toast.makeText(requireContext(),"เพิ่มรายการลดหย่อนเรียบร้อย!!", Toast.LENGTH_SHORT).show()
+                            dialog?.dismiss()
+                        }
+                    }else  if(etDeduct.text.toString().toDouble() > viewModel.calculateDeductMax(typeList[selectType+7].type,viewModel.calculateTaxIncome.value!!)){
+                        val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialogTheme).apply {
+                            setTitle("แจ้งเตือน")
+                            setMessage("ลดหย่อนเกินค่าสูงสุด")
+                            setIcon(R.drawable.ic_round_warning_24)
+                            setCancelable(false)
+                            setPositiveButton("เข้าใจแล้ว"){ dialogInterface, which ->
+                                dialogInterface.dismiss()
+                            }
+                        }
+                        dialog.show()
+                    }else{
+                        viewModel.addDeductData(selectType+7 , etDeduct.text.toString().toDouble(),TypeDeductList.data[selectType+7].deductionMax)
+                        Toast.makeText(requireContext(),"เพิ่มรายการลดหย่อนเรียบร้อย!!", Toast.LENGTH_SHORT).show()
+                        dialog?.dismiss()
+                    }
                 } else {
                     val builder = MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialogTheme).apply {
                         setTitle("แจ้งเตือน")

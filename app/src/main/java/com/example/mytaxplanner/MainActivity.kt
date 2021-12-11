@@ -69,27 +69,27 @@ class MainActivity : AppCompatActivity() {
                 R.id.fragment_suggest -> {
                     supportFragmentManager.beginTransaction().replace(R.id.fragment, SuggestFragment()).commit()
                     binding.topAppBar.apply {
-                        setBackgroundColor(resources.getColor(R.color.teal_200,theme))
+                        setBackgroundColor(resources.getColor(R.color.purple_200,theme))
                         title = getString(R.string.fragment_suggest)
                     }
                     window.apply {
                         addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-                        statusBarColor = resources.getColor(R.color.teal_700,theme)
+                        statusBarColor = resources.getColor(R.color.purple_700,theme)
                     }
                     true
                 }
-                R.id.fragment_more -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.fragment, MoreFragment()).commit()
-                    binding.topAppBar.apply {
-                        setBackgroundColor(resources.getColor(R.color.teal_200,theme))
-                        title = getString(R.string.fragment_more)
-                    }
-                    window.apply {
-                        addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-                        statusBarColor = resources.getColor(R.color.teal_700,theme)
-                    }
-                    true
-                }
+//                R.id.fragment_more -> {
+//                    supportFragmentManager.beginTransaction().replace(R.id.fragment, MoreFragment()).commit()
+//                    binding.topAppBar.apply {
+//                        setBackgroundColor(resources.getColor(R.color.teal_200,theme))
+//                        title = getString(R.string.fragment_more)
+//                    }
+//                    window.apply {
+//                        addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+//                        statusBarColor = resources.getColor(R.color.teal_700,theme)
+//                    }
+//                    true
+//                }
 //                R.id.fragment_file -> {
 //                    supportFragmentManager.beginTransaction().replace(R.id.fragment, FileFragment()).commit()
 //                    true

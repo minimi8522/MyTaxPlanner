@@ -35,12 +35,12 @@ class IncomeAdapter(var incomeDataList: List<IncomeData>) : RecyclerView.Adapter
         holder.getTaxPaid.text = "${incomeDataList[position].incomeVAT}  บาท"
         holder.getTaxType.text = typeList[incomeDataList[position].type].description
 
-        holder.itemView.rootView.setOnClickListener {
-            (mContext as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment, InfoFragment.newInstance("",""))
-                .addToBackStack("info")
-                .commit();
-        }
+//        holder.itemView.rootView.setOnClickListener {
+//            (mContext as MainActivity).supportFragmentManager.beginTransaction()
+//                .replace(R.id.fragment, InfoFragment.newInstance("",""))
+//                .addToBackStack("info")
+//                .commit();
+//        }
     }
 
     override fun getItemCount(): Int {

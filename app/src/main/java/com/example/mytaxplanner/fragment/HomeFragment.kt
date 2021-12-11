@@ -60,9 +60,9 @@ class HomeFragment : BaseFragment() {
             setArrowSize(12)
             setCornerRadius(4f)
             setAlpha(1f)
-            setLayout(R.layout.card_income_info)
+            setLayout(R.layout.card_deduct_info)
             setTextIsHtml(true)
-            setBackgroundColorResource(R.color.teal_100)
+            setBackgroundColorResource(R.color.pink)
             setBalloonAnimation(BalloonAnimation.FADE)
             setLifecycleOwner(lifecycleOwner)
         }

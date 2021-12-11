@@ -32,4 +32,6 @@
     <string name="normal">ปกติ</string>
 
     <string name="warning">แจ้งเตือน</string>
+    <string name="income_describe">เงินได้พึงประเมิน คือรายได้ทั้งหมดหลังจากหักค่าใช้จ่ายแล้ว ที่ต้องนำมาเสียภาษีตามกฏหมาย</string>
+    <string name="deduct_describe">ค่าลดหย่อน คือรายจ่ายที่สามารถนำมาใช้คำนวณเงินได้สุทธิที่จะนำไปคำนวณภาษีได้</string>
 </resources>
